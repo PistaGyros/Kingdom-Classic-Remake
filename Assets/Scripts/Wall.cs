@@ -72,8 +72,9 @@ public class Wall : MonoBehaviour
         AmountOfRequiredCoinsForUpgrade();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
+        Debug.Log(buildTime);
         playerCoins = playerCharacter.GetComponent<PickDropCoins>().numberOfCoins;
         playerPayButtonIsPressed = playerCharacter.GetComponent<PickDropCoins>().payButtonIsPressed;
 
@@ -125,6 +126,10 @@ public class Wall : MonoBehaviour
         {
             playerHasCollidedWithWall = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider2D)
+    {
         if (collider2D.CompareTag("Builder"))
         {
             if (wallHasBeenMarked)
