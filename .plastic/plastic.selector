@@ -1,0 +1,4 @@
+repository "Kingdom Classic Remake@PistaGyros@cloud"
+  path "/"
+    br "/main"
+    co "/main"

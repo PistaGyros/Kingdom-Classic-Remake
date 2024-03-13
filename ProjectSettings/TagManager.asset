@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Coins
+  - PlayerCoins
+  - Beggar
+  - CoinCall
+  - Peasents
+  - PlayerCoinCall
+  - Archer
+  - Builder
+  - Farmer
+  - OpenBowMarket
+  - BowMarket
+  - OpenHammerMarket
+  - HammerMarket
+  - MarkedTree
+  - MarkableTrees
+  - TownCenter1
+  - Bunnies
+  - Arrow
+  - Enemies
+  - TrollCollider
+  - WallUnderAttack
+  - Ground
+  - Wall
+  - MarkedWall
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Coin
+  - Trolls
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2520916717
+    locked: 0
+  - name: Trees
+    uniqueID: 3915381463
+    locked: 0
