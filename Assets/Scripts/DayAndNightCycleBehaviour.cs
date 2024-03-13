@@ -40,7 +40,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
     {
         PartsOfDayChanges();   
 
-        time += Time.deltaTime;
+        time += Time.deltaTime * 25;
         
 
         globalLightComponent.color = lightColour.Evaluate(time * 0.0041322314049587f);

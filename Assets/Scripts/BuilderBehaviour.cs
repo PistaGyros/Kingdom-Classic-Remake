@@ -11,6 +11,7 @@ public class BuilderBehaviour : MonoBehaviour
     private GameObject[] walls;
     private GameObject[] markedWalls;
     private GameObject[] wallsUnderAttack;
+    private GameObject[] emptyWalls;
     Rigidbody2D rigidbody2D;
     private float direction;
     int numberOfCoinsOfBuilder;
@@ -65,7 +66,16 @@ public class BuilderBehaviour : MonoBehaviour
             Wall walls = wall.GetComponent<Wall>();
             walls.OnCallBuilderToWall += Walls_OnCallBuilderToWall;
             walls.OnStopCallBuilderToWall += Walls_OnStopCallBuilderToWall;
-        }        
+        }
+
+        if (emptyWalls == null)
+            emptyWalls = GameObject.FindGameObjectsWithTag("EmptyWall"); ;
+        foreach( GameObject wall in emptyWalls)
+        {
+            Wall walls = wall.GetComponent<Wall>();
+            walls.OnCallBuilderToWall += Walls_OnCallBuilderToWall;
+            walls.OnStopCallBuilderToWall += Walls_OnStopCallBuilderToWall;
+        }
     }
 
 

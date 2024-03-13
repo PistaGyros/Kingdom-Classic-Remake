@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Troll.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Troll.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WallsAndScaffolds/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WallsAndScaffolds/Wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrollBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrollBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710341178100</updated>
-      <workItem from="1710341183919" duration="593000" />
+      <workItem from="1710341183919" duration="11271000" />
     </task>
     <servers />
   </component>

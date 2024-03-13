@@ -28,6 +28,7 @@ TagManager:
   - Ground
   - Wall
   - MarkedWall
+  - EmptyWall
   layers:
   - Default
   - TransparentFX
