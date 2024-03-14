@@ -1,0 +1,51 @@
+--------------------------------------------------------------------------------
+General stuff:
+[]  add several version branchess into project
+[x] draw sprites of beggar's camps
+--------------------------------------------------------------------------------
+Funcional stuff:
+[]  add queen
+[x] add movement to player with animations
+[x] setup camera
+[x] add coin pickup mechanic
+[x] add coin drop mechanic
+[x] add peasents
+[x] add beggar coin pickup mechanic
+[x] add beggar go for coin
+    add other npcs (peasent [x], archer[x], farmer[] and builders[x])
+[x] add arrow shoot by archer mechanic
+[]  add coin pickup animation
+[]  add castle with upgrades
+[x] add hammer market
+[x] add bow market
+[]  add scythe market
+[]  add coin pouch
+[x] add cut down tree mechanic
+[x] add walls mechanic
+[]  add last wall mechanic (borders of kingdom)
+[]  add towers mechanic
+[x] add day&night cycle
+[x] add camps with beggars
+[x] add enemies
+[x] add portals
+[-] add forest mechanic
+[]  add meadow mechanic
+[-] add bunnies
+[]  add water
+--------------------------------------------------------------------------------
+Enviroment:
+[]  add coin idle animation
+[]  add coin pickup&drop animation
+[]  add tiles
+[]  add background enviroment
+[]  add scaffold animation sprites
+
+--------------------------------------------------------------------------------
+UI:
+[]  add pause screen
+[]  add start screen menu
+---------------------------------------------------------------------------------
+Rework & overhaul:
+[x] rework pay system with calls for NPCs
+[-] rework trees (add outline)
+[]  rework arrows
