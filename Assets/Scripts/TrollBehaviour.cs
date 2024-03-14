@@ -57,10 +57,10 @@ public class TrollBehaviour : MonoBehaviour
 
     private void Attack() 
     {
-        if (canAttack == true && canJumpAgain <= 0)
+        if (canAttack && canJumpAgain <= 0)
         {
             canJumpAgain = 1f;
-            rigidbody2D.velocity += new Vector2(14f * direction, 14f);
+            rigidbody2D.velocity += new Vector2(10f * direction, 10f);
         }
     }
 

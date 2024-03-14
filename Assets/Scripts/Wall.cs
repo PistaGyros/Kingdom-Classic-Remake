@@ -9,6 +9,7 @@ public class Wall : MonoBehaviour
 {
     [SerializeField] private GameObject scaffold;
     private GameObject playerCharacter;
+    private BoxCollider2D boxCollider2D;
 
     [SerializeField] private Sprite baseForWall;
     [SerializeField] private Sprite wallLvlOne;
@@ -64,6 +65,8 @@ public class Wall : MonoBehaviour
 
     void Start()
     {
+        transform.tag = "EmptyWall";
+        boxCollider2D = GetComponent<BoxCollider2D>();
         playerCharacter = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         scaffoldSpriteRenderer = scaffold.GetComponent<SpriteRenderer>();
@@ -72,8 +75,9 @@ public class Wall : MonoBehaviour
         AmountOfRequiredCoinsForUpgrade();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
+        //Debug.Log(buildTime);
         playerCoins = playerCharacter.GetComponent<PickDropCoins>().numberOfCoins;
         playerPayButtonIsPressed = playerCharacter.GetComponent<PickDropCoins>().payButtonIsPressed;
 
@@ -125,6 +129,10 @@ public class Wall : MonoBehaviour
         {
             playerHasCollidedWithWall = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider2D)
+    {
         if (collider2D.CompareTag("Builder"))
         {
             if (wallHasBeenMarked)
@@ -195,24 +203,28 @@ public class Wall : MonoBehaviour
         {
             spriteRenderer.sprite = wallLvlOne;
             transform.position = new Vector2(transform.position.x, 0.64f);
+            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x , boxCollider2D.offset.y - 0.64f);
             HP = hitPointsLvlOne;
         }            
         else if (actualLvlOfWall == 2)
         {
             spriteRenderer.sprite = wallLvlTwo;
             transform.position = new Vector2(transform.position.x, 0.85f);
+            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.21f);
             HP = hitPointsLvlTwo;
         }
         else if (actualLvlOfWall == 3)
         {
             spriteRenderer.sprite = wallLvlThree;
             transform.position = new Vector2(transform.position.x, 1.05f);
+            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.2f);
             HP = hitPointsLvlTwo;
         }
         else if (actualLvlOfWall == 4)
         {
             spriteRenderer.sprite = wallLvlFour;
             transform.position = new Vector2(transform.position.x, 1.22f);
+            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.17f);
             HP = hitPointsLvlFour;
         }
     }

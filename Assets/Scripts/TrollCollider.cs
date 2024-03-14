@@ -11,7 +11,7 @@ public class TrollCollider : MonoBehaviour
 
     private int direction;
 
-    Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidbody2D;
 
 
     private void Start()
@@ -39,21 +39,20 @@ public class TrollCollider : MonoBehaviour
         {
             hitPoints -= 1;
         }
-
         else if (collision2D.CompareTag("Wall") || collision2D.CompareTag("WallUnderAttack"))
         {
-            //Debug.Log("Troll has collided");
+            Debug.Log("Troll has collided");
             BackOff();
         }
-        if (collision2D.CompareTag("Ground"))
+        else if (collision2D.CompareTag("Ground"))
         {
-            rigidbody2D.velocity = new Vector2(0, 0);
+            //rigidbody2D.velocity = new Vector2(0, 0);
         }
     }
 
     private void BackOff()
     {
         rigidbody2D.velocity = new Vector2(0, 0);
-        rigidbody2D.velocity += new Vector2(-10f * direction, 7.5f);
+        rigidbody2D.velocity += new Vector2(-5f * direction, 1.5f);
     }
 }

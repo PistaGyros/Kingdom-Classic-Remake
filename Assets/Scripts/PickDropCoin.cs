@@ -45,7 +45,8 @@ public class PickDropCoins : MonoBehaviour
         {
             isCollidingWithTree = true;
         }
-        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("MarkedWall"))
+        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack") || 
+                 collider2D.CompareTag("MarkedWall") || collider2D.CompareTag("EmptyWall"))
         {
             isCollidingWithUpgradableWall = true;
         }
@@ -62,7 +63,8 @@ public class PickDropCoins : MonoBehaviour
         {
             isCollidingWithTree = false;
         }
-        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("MarkedWall"))
+        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack") || 
+                 collider2D.CompareTag("MarkedWall") || collider2D.CompareTag("EmptyWall"))
         {
             isCollidingWithUpgradableWall = false;
         }
