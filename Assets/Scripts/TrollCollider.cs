@@ -37,7 +37,7 @@ public class TrollCollider : MonoBehaviour
     {
         if (collision2D.CompareTag("Arrow"))
         {
-            hitPoints -= 1;
+            //hitPoints -= 1;
         }
         else if (collision2D.CompareTag("Wall") || collision2D.CompareTag("WallUnderAttack"))
         {
