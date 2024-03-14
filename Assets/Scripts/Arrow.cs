@@ -44,12 +44,13 @@ public class Arrow : MonoBehaviour
     {
         if (shooted)
         {
+            Vector3 position = transform.position;
             dist = targetX - startX;
-            nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
-            baseY = Mathf.Lerp(transform.position.y, positionOfTarget.y, (nextX - startX) / dist);
+            nextX = Mathf.MoveTowards(position.x, targetX, speed * Time.deltaTime);
+            baseY = Mathf.Lerp(position.y, positionOfTarget.y, (nextX - startX) / dist);
             height = launchHeight * (nextX - startX) * (nextX - targetX) / (-0.25f * dist * dist);
-            movePosition = new Vector3(nextX, baseY + height, transform.position.z);
-            transform.rotation = LookAtTarget(movePosition - transform.position);
+            movePosition = new Vector3(nextX, baseY + height, position.z);
+            transform.rotation = LookAtTarget(movePosition - position);
             transform.position = movePosition;
         }
     }
@@ -69,17 +70,22 @@ public class Arrow : MonoBehaviour
             boxCollider2D.enabled = false;
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if (collider2D.CompareTag("Bunnies"))
+        {
+            timeLeft = -1f;
+        }
+        else if (collider2D.CompareTag("TrollCollider"))
+        {
+            Destroy(collider2D.transform.parent.gameObject);
+            timeLeft = -1f;
+        }
+    }
 
     public static Quaternion LookAtTarget(Vector2 r)
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(r.y, r.x) * Mathf.Rad2Deg);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider2D)
-    {
-        if (collider2D.CompareTag("Bunnies") || collider2D.CompareTag("TrollCollider"))
-        {
-            timeLeft = -1f;
-        }
     }
 }
