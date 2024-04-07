@@ -1,4 +1,7 @@
 --------------------------------------------------------------------------------
+Actually working on:
+[*] add last wall mechanic (borders of kingdom)
+--------------------------------------------------------------------------------
 General stuff:
 []  add several version branchess into project
 [x] draw sprites of beggar's camps
@@ -22,14 +25,13 @@ Funcional stuff:
 []  add coin pouch
 [x] add cut down tree mechanic
 [x] add walls mechanic
-[]  add last wall mechanic (borders of kingdom)
+[*] add last wall mechanic (borders of kingdom)
 []  add towers mechanic
 [x] add day&night cycle
 [x] add camps with beggars
 [x] add enemies
 [x] add portals
-[-] add forest mechanic
-[]  add meadow mechanic
+[-] add meadow mechanic
 [-] add bunnies
 []  add water
 --------------------------------------------------------------------------------
@@ -39,7 +41,6 @@ Enviroment:
 []  add tiles
 []  add background enviroment
 []  add scaffold animation sprites
-
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
@@ -48,4 +49,4 @@ UI:
 Rework & overhaul:
 [x] rework pay system with calls for NPCs
 [-] rework trees (add outline)
-[]  rework arrows
+[x] rework arrows
