@@ -84,25 +84,25 @@ public class BuilderBehaviour : MonoBehaviour
         currentPos = transform.position;
         targetPos = new Vector2(e.positionOfWall.x, transform.position.y);
         runForWall = true;
+        isBussy = true;
     }
-
     private void Walls_OnStopCallBuilderToWall(object sender, System.EventArgs e)
     {
         runForWall = false;
+        isBussy = false;
     }
-
-    
-    private void Tree1_OnStopCallToBuildersToTree(object sender, System.EventArgs e)
-    {
-        direction = 0;
-    }
-
     private void Tree1_OnCallToBuildersToTree(object sender, Tree1.CallToBuilderArgs e)
     {
+        isBussy = true;
         if (e.positionOfTree.x > transform.position.x && !isBussy)
             direction = 1;
         else if(!isBussy)
             direction = -1;
+    }
+    private void Tree1_OnStopCallToBuildersToTree(object sender, System.EventArgs e)
+    {
+        direction = 0;
+        isBussy = false;
     }
 
     void FixedUpdate()
@@ -135,7 +135,6 @@ public class BuilderBehaviour : MonoBehaviour
 
     private void RunForMarkedTree()
     {
-
         Vector2 builderVelocity = new Vector2(direction, 0);
         rigidbody2D.velocity = builderVelocity * builderSpeed;
     }

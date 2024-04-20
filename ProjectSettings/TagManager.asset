@@ -30,6 +30,8 @@ TagManager:
   - MarkedWall
   - EmptyWall
   - Test
+  - EastBorder
+  - WestBorder
   layers:
   - Default
   - TransparentFX
