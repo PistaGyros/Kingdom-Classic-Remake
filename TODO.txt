@@ -3,7 +3,7 @@ Actually working on:
 [*] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 General stuff:
-[]  add several version branchess into project
+[x] add several version branchess into project
 [x] draw sprites of beggar's camps
 --------------------------------------------------------------------------------
 Funcional stuff:
@@ -17,23 +17,23 @@ Funcional stuff:
 [x] add beggar go for coin
     add other npcs (peasent [x], archer[x], farmer[] and builders[x])
 [x] add arrow shoot by archer mechanic
-[]  add coin pickup animation
-[]  add castle with upgrades
 [x] add hammer market
 [x] add bow market
-[]  add scythe market
-[]  add coin pouch
 [x] add cut down tree mechanic
 [x] add walls mechanic
-[*] add last wall mechanic (borders of kingdom)
-[]  add towers mechanic
 [x] add day&night cycle
 [x] add camps with beggars
 [x] add enemies
 [x] add portals
+[]  add coin pickup animation
+[]  add castle with upgrades
+[]  add scythe market
+[]  add coin pouch
+[]  add towers mechanic
+[]  add water
 [-] add meadow mechanic
 [-] add bunnies
-[]  add water
+[*] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
