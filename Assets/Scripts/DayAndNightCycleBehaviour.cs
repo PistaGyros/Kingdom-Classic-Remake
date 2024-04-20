@@ -8,7 +8,7 @@ using UnityEngine.Rendering.Universal;
 public class DayAndNightCycleBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject globalLight;
-    [SerializeField] Gradient lightColour;
+    [SerializeField] private Gradient lightColour;
 
     Light2D globalLightComponent;
 
@@ -24,6 +24,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
     private bool canChangeToMoonrise = true;
     private bool canChangeToMoonset = true;
 
+    public event EventHandler OnChangeToSunSet;
     public event EventHandler OnChangeToMoonrise;
     public event EventHandler OnChangeToNextDay; 
 
@@ -41,7 +42,6 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
         PartsOfDayChanges();   
 
         time += Time.fixedDeltaTime;
-        
 
         globalLightComponent.color = lightColour.Evaluate(time * 0.0041322314049587f);
 
@@ -71,6 +71,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
 
         else if (canChangeToSunset && time >= 90f)
         {
+            OnChangeToSunSet?.Invoke(this, EventArgs.Empty);
             canChangeToSunset = false;
         }
 

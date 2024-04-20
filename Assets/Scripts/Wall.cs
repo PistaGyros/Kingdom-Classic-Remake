@@ -56,6 +56,7 @@ public class Wall : MonoBehaviour
 
     public event EventHandler<CallToWallArgs> OnCallBuilderToWall;
     public event EventHandler OnStopCallBuilderToWall;
+    public event EventHandler<CallToWallArgs> WallHasBeenUpgraded;
 
     public class CallToWallArgs : EventArgs
     {
@@ -109,6 +110,7 @@ public class Wall : MonoBehaviour
             actualLvlOfWall++;
             ChangerToAnotherLvl();
             OnStopCallBuilderToWall?.Invoke(this, EventArgs.Empty);
+            WallHasBeenUpgraded?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
         }
     }
 
@@ -128,6 +130,13 @@ public class Wall : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithWall = true;
+        }
+        if (collider2D.CompareTag("Builder"))
+        {
+            if (wallHasBeenMarked)
+            {
+                wallIsUnderConstruction = true;
+            }
         }
     }
 
@@ -181,10 +190,7 @@ public class Wall : MonoBehaviour
             }
         }
         else
-        {
             CancelInvoke("PayToWall");
-        }
-
     }
 
     private void AmountOfRequiredCoinsForUpgrade()
@@ -195,6 +201,13 @@ public class Wall : MonoBehaviour
         else if (actualLvlOfWall == 3) requiredCoinsForUpgrade = requiredCoinsForUpgradeToFour;
     }
 
+    
+
+    private void CallBuilderToWall()
+    {
+        OnCallBuilderToWall?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
+    }
+    
     private void ChangerToAnotherLvl()
     {
         if (actualLvlOfWall == 0)
@@ -228,7 +241,7 @@ public class Wall : MonoBehaviour
             HP = hitPointsLvlFour;
         }
     }
-
+    
     private void ScaffoldPosition()
     {
         Debug.Log(actualLvlOfWall);
@@ -240,11 +253,6 @@ public class Wall : MonoBehaviour
             scaffoldPosition = new Vector2(transform.position.x, 0.38f);
         else if (actualLvlOfWall == 3)
             scaffoldPosition = new Vector2(transform.position.x, 0.20f);
-    }
-
-    private void CallBuilderToWall()
-    {
-        OnCallBuilderToWall?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
     }
 
     private void ChangeToBrokenWall()
