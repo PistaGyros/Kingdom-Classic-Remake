@@ -39,9 +39,14 @@ Funcional stuff:
 Enviroment:
 []  add coin idle animation
 []  add coin pickup&drop animation
-[]  add tiles
 []  add background enviroment
 []  add scaffold animation sprites
+--------------------------------------------------------------------------------
+Art:
+[-] add grass tiles
+[-] add muddy tiles
+[x] add meadow tiles
+[]  add forest tiles
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
