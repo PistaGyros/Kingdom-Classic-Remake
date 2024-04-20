@@ -1,10 +1,8 @@
 --------------------------------------------------------------------------------
 Actually working on:
-[*] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 General stuff:
 [x] add several version branchess into project
-[x] draw sprites of beggar's camps
 --------------------------------------------------------------------------------
 Funcional stuff:
 []  add queen
@@ -34,7 +32,7 @@ Funcional stuff:
 []  add animation and stuff for borders
 [-] add meadow mechanic
 [-] add bunnies
-[*] add last wall mechanic (borders of kingdom)
+[x] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
@@ -43,10 +41,12 @@ Enviroment:
 []  add scaffold animation sprites
 --------------------------------------------------------------------------------
 Art:
-[-] add grass tiles
-[-] add muddy tiles
+[x] add muddy tiles
 [x] add meadow tiles
+[x] draw sprites of beggar's camps
+[]  add city grass tiles
 []  add forest tiles
+[]  add boulders (foundation for towers)
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
