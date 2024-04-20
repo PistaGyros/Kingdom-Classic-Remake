@@ -24,6 +24,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
     private bool canChangeToMoonrise = true;
     private bool canChangeToMoonset = true;
 
+    public event EventHandler OnChangeToSunRise;
     public event EventHandler OnChangeToSunSet;
     public event EventHandler OnChangeToMoonrise;
     public event EventHandler OnChangeToNextDay; 
