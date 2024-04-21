@@ -44,8 +44,8 @@ Art:
 [x] add muddy tiles
 [x] add meadow tiles
 [x] draw sprites of beggar's camps
+[x] add forest tiles
 []  add city grass tiles
-[]  add forest tiles
 []  add boulders (foundation for towers)
 --------------------------------------------------------------------------------
 UI:
