@@ -32,15 +32,11 @@ public class GeneralHandler : MonoBehaviour
         {
             Invoke("GoToEastBorders", 1f);
             archersOnEast.Add(archer);
-            Debug.Log(archersOnEast.Count);
-            Debug.Log(archersOnWest.Count);
         }
         else
         {
             Invoke("GoToWestBorders", 1f);
             archersOnWest.Add(archer);
-            Debug.Log(archersOnEast.Count);
-            Debug.Log(archersOnWest.Count);
         }
     }
 

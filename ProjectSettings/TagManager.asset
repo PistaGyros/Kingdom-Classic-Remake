@@ -29,10 +29,11 @@ TagManager:
   - Wall
   - MarkedWall
   - EmptyWall
-  - Test
   - EastBorder
   - WestBorder
   - FreeArcher
+  - PositionForArchers
+  - BeggarsCamp
   layers:
   - Default
   - TransparentFX

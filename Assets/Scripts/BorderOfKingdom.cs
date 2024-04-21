@@ -16,7 +16,7 @@ public class BorderOfKingdom : MonoBehaviour
 
     void Start()
     {
-        if (transform.tag == "EastBorder")
+        if (CompareTag("EastBorder"))
             isEast = true;
         else
         {

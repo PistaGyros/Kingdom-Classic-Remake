@@ -7,15 +7,17 @@ public class BunnyBehaviour : MonoBehaviour
     [SerializeField] GameObject coin;
     SpriteRenderer bunnySprite;
     [SerializeField] Sprite deadBunnySprite;
+    private Rigidbody2D bunnyRigidbody2D;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         bunnySprite = GetComponent<SpriteRenderer>();
+        bunnyRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         
     }
@@ -27,6 +29,10 @@ public class BunnyBehaviour : MonoBehaviour
             Destroy(gameObject, 1f);
             bunnySprite.sprite = deadBunnySprite;
             Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        }
+        else if (collider2D.CompareTag("Ground"))
+        {
+            
         }
     }
 }

@@ -17,9 +17,9 @@ public class ArrowShooter : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        timeToShootAgain += Time.deltaTime;
+        timeToShootAgain += Time.fixedDeltaTime;
         if (timeToShootAgain >= 3f)
             canShoot = true;
     }
@@ -41,6 +41,11 @@ public class ArrowShooter : MonoBehaviour
         canShoot = false;
         timeToShootAgain = 0;
         targetPos = collider2D.transform.position;
+        Invoke("Delay", 1f);
+    }
+
+    private void Delay()
+    {
         arrow.SetActive(true);
         arrow.GetComponent<Arrow>().shooted = true;
         arrow.GetComponent<Arrow>().timeLeft = 2.9f;

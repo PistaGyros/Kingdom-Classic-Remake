@@ -89,6 +89,7 @@ public class BuilderBehaviour : MonoBehaviour
                 direction = 1;
             else
                 direction = -1;
+            transform.localScale = new Vector2(direction, 1);
             isBussy = true;
         }
     }
@@ -105,6 +106,7 @@ public class BuilderBehaviour : MonoBehaviour
                 direction = 1;
             else
                 direction = -1;
+            transform.localScale = new Vector2(direction, 1);
             isBussy = true;
         }
     }
@@ -116,8 +118,7 @@ public class BuilderBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        RunForMarkedTree();
-        RunForWall();
+        Run();
     }
 
     void OnTriggerEnter2D(Collider2D collider2D)
@@ -142,13 +143,7 @@ public class BuilderBehaviour : MonoBehaviour
         }
     }
 
-    private void RunForMarkedTree()
-    {
-        Vector2 builderVelocity = new Vector2(direction, 0);
-        rigidbody2D.velocity = builderVelocity * builderSpeed;
-    }
-
-    private void RunForWall()
+    private void Run()
     {
         Vector2 builderVelocity = new Vector2(direction, 0);
         rigidbody2D.velocity = builderVelocity * builderSpeed;

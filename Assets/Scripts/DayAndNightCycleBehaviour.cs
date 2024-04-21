@@ -43,6 +43,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
         PartsOfDayChanges();   
 
         time += Time.fixedDeltaTime;
+        //Debug.Log("Actual time: " + time);
 
         globalLightComponent.color = lightColour.Evaluate(time * 0.0041322314049587f);
 
@@ -68,6 +69,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
         else if (canChangeToSunrise && time >= 20f)
         {
             canChangeToSunrise = false;
+            OnChangeToSunRise?.Invoke(this, EventArgs.Empty);
         }
 
         else if (canChangeToSunset && time >= 90f)
