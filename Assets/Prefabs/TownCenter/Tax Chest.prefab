@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5470224029272166629}
   - component: {fileID: 4937359926511480397}
   - component: {fileID: 4114537427231588291}
+  - component: {fileID: 713040486967895016}
   m_Layer: 0
   m_Name: Tax Chest
   m_TagString: TaxChest
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 0e2ad49dc4beb354f82342471cbd2522, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,3 +131,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.6315789}
   m_EdgeRadius: 0
+--- !u!114 &713040486967895016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893802712833162713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6819894f50b57a4d9d95ea21e4b8a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 2022387852028230222, guid: 9cafb947f4b5dbc46958e7985473c3d4, type: 3}
