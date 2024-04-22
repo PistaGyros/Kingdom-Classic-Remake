@@ -30,8 +30,8 @@ Funcional stuff:
 []  add towers mechanic
 []  add water
 []  add animation and stuff for borders
-[-] add meadow mechanic
-[-] add bunnies
+[--]add meadow mechanic
+[--]add bunnies
 [x] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 Enviroment:
