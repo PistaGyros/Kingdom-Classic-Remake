@@ -36,6 +36,15 @@ public class ArrowShooter : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.CompareTag("Bunnies"))
+        {
+            CancelInvoke("Delay");
+            arrow.GetComponent<Arrow>().timeLeft = -1;
+        }
+    }
+
     private void Shoot(Collider2D collider2D)
     {
         canShoot = false;

@@ -34,6 +34,8 @@ TagManager:
   - FreeArcher
   - PositionForArchers
   - BeggarsCamp
+  - TaxChest
+  - DestroyedWall
   layers:
   - Default
   - TransparentFX
@@ -43,7 +45,7 @@ TagManager:
   - UI
   - Coin
   - Trolls
-  - 
+  - Wall
   - 
   - 
   - 

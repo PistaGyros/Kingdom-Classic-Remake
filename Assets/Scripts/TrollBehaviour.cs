@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TrollBehaviour : MonoBehaviour
 {
-    [SerializeField] GameObject trollCollider;
-
     private Rigidbody2D rigidbody2D;
 
     private bool run;
@@ -32,13 +31,17 @@ public class TrollBehaviour : MonoBehaviour
         Run();
         Attack();
         canJumpAgain -= Time.fixedDeltaTime;
-        //Debug.Log(canJumpAgain);
     }
 
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack"))
+        if (collider2D.CompareTag("EmptyWall"))
+        {
+            run = true;
+            canAttack = false;
+        }
+        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("WallUnderAttack"))
         {
             run = false;
             canAttack = true;
@@ -51,6 +54,11 @@ public class TrollBehaviour : MonoBehaviour
         {
             canAttack = false;
             run = true;            
+        }
+        else if (collider2D.CompareTag("EmptyWall"))
+        {
+            run = true;
+            canAttack = false;
         }
     }
 

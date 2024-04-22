@@ -31,6 +31,7 @@ public class TileBehaviour : MonoBehaviour
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToSunRise += DayAndNightCycleBehaviourOnOnChangeToSunRise;
         dayAndNightCycleBehaviour.OnChangeToSunSet += DayAndNightCycleBehaviourOnOnChangeToSunSet;
+        isMeadow = true;
     }
 
     private void DayAndNightCycleBehaviourOnOnChangeToSunSet(object sender, EventArgs e)
@@ -101,9 +102,9 @@ public class TileBehaviour : MonoBehaviour
     private void SpawnBunnies()
     {
         // if there is no night, bunnies can spawn
-        if (bunCanSpawn && actualNumBun <= 2 && bunSpawnTimer <= 0)
+        if (isMeadow && bunCanSpawn && actualNumBun <= 2 && bunSpawnTimer <= 0)
         {
-            Instantiate(bunny, new Vector2(transform.position.x, 0.15f), Quaternion.identity);
+            // Instantiate(bunny, new Vector2(transform.position.x, 0.15f), Quaternion.identity);
             bunSpawnTimer = 60f;
         }
     }
