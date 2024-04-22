@@ -32,7 +32,8 @@ Funcional stuff:
 []  add animation and stuff for borders
 [--]add meadow mechanic
 [--]add bunnies
-[x] add last wall mechanic (borders of kingdom)
+[-] add last wall mechanic (borders of kingdom)
+[-] add tax chest
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
