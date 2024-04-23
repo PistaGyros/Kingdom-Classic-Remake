@@ -81,34 +81,44 @@ public class BuilderBehaviour : MonoBehaviour
 
     private void Walls_OnCallBuilderToWall(object sender, Wall.CallToWallArgs e)
     {
-        currentPos = transform.position;
-        targetPos = new Vector2(e.positionOfWall.x, transform.position.y);
-        runForWall = true;
+        if (!isBussy)
+        {
+            currentPos = transform.position;
+            targetPos = new Vector2(e.positionOfWall.x, transform.position.y);
+            if (currentPos.x < targetPos.x)
+                direction = 1;
+            else
+                direction = -1;
+            transform.localScale = new Vector2(direction, 1);
+            isBussy = true;
+        }
     }
-
     private void Walls_OnStopCallBuilderToWall(object sender, System.EventArgs e)
     {
-        runForWall = false;
+        direction = 0;
+        isBussy = false;
     }
-
-    
+    private void Tree1_OnCallToBuildersToTree(object sender, Tree1.CallToBuilderArgs e)
+    {
+        if (!isBussy)
+        {
+            if (e.positionOfTree.x > transform.position.x)
+                direction = 1;
+            else
+                direction = -1;
+            transform.localScale = new Vector2(direction, 1);
+            isBussy = true;
+        }
+    }
     private void Tree1_OnStopCallToBuildersToTree(object sender, System.EventArgs e)
     {
         direction = 0;
-    }
-
-    private void Tree1_OnCallToBuildersToTree(object sender, Tree1.CallToBuilderArgs e)
-    {
-        if (e.positionOfTree.x > transform.position.x && !isBussy)
-            direction = 1;
-        else if(!isBussy)
-            direction = -1;
+        isBussy = false;
     }
 
     void FixedUpdate()
     {
-        RunForMarkedTree();
-        RunForWall();
+        Run();
     }
 
     void OnTriggerEnter2D(Collider2D collider2D)
@@ -133,26 +143,9 @@ public class BuilderBehaviour : MonoBehaviour
         }
     }
 
-    private void RunForMarkedTree()
+    private void Run()
     {
-
         Vector2 builderVelocity = new Vector2(direction, 0);
         rigidbody2D.velocity = builderVelocity * builderSpeed;
-    }
-
-    private void RunForWall()
-    {
-        if (runForWall)
-        {
-            sinTime += Time.fixedDeltaTime * 1;//builder speed
-            sinTime = Mathf.Clamp(sinTime, 0, Mathf.PI);
-            float t = evaluate(sinTime);
-            transform.position = Vector2.Lerp(currentPos, targetPos, t);
-        }
-    }
-
-    public float evaluate(float x)
-    {
-        return 0.5f * Mathf.Sin(x - Mathf.PI / 2) + 0.5f;
     }
 }

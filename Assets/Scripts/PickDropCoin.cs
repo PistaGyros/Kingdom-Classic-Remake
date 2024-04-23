@@ -10,9 +10,7 @@ public class PickDropCoins : MonoBehaviour
 
     public int numberOfCoins = 100;
     public GameObject coin;
-    [SerializeField] GameObject scaffold0;
-    [SerializeField] GameObject scaffold1;
-
+    
     bool isCollidingWithMarket;
     public bool payButtonIsPressed;
     bool isCollidingWithTree;

@@ -2,11 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.Collections.Unicode;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class TrollCollider : MonoBehaviour
 {
+    [SerializeField] private GameObject trollGrounder;
+    private BoxCollider2D trollCollider2D;
+
+    [SerializeField] private Sprite deadSprite;
+    
+    private LayerMask coinLayerMask;
+    private LayerMask wallLayerMask;
+    
     private int hitPoints = 1;
 
     private int direction;
@@ -17,6 +23,9 @@ public class TrollCollider : MonoBehaviour
     private void Start()
     {
         rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        trollCollider2D = trollGrounder.GetComponent<BoxCollider2D>();
+        coinLayerMask = LayerMask.GetMask("Coin");
+        wallLayerMask = LayerMask.GetMask("Wall");
         if (transform.position.x > 0)
         {
             direction = -1;
@@ -29,24 +38,37 @@ public class TrollCollider : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hitPoints <= 0)
-            Destroy(transform.parent.gameObject);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         if (collision2D.CompareTag("Arrow"))
         {
-            //hitPoints -= 1;
+            transform.tag = "DeadTroll";
+            Destroy(transform.parent.gameObject, 1f);
+            // TODO: change sprite to dead sprite
         }
         else if (collision2D.CompareTag("Wall") || collision2D.CompareTag("WallUnderAttack"))
         {
-            Debug.Log("Troll has collided");
+            // Debug.Log("Troll has collided");
             BackOff();
         }
         else if (collision2D.CompareTag("Ground"))
         {
             //rigidbody2D.velocity = new Vector2(0, 0);
+        }
+        else if (collision2D.CompareTag("EmptyWall"))
+        {
+            trollCollider2D.excludeLayers = wallLayerMask;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.CompareTag("EmptyWall"))
+        {
+            trollCollider2D.excludeLayers = coinLayerMask;
         }
     }
 

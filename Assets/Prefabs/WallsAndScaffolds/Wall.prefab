@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1826792026022892625}
   - component: {fileID: 8009975506647344929}
   - component: {fileID: 1501354996954043005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: EmptyWall
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5764642145760467194}
   - component: {fileID: 2112937439820072894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scaffold
   m_TagString: Untagged
   m_Icon: {fileID: 0}

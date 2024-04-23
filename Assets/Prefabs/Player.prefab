@@ -116,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &5207877168725915351
 Animator:
   serializedVersion: 5
@@ -240,14 +240,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfCoins: 100
   coin: {fileID: 2022387852028230222, guid: 97330af475cfe4c48adf74cd41bb4065, type: 3}
-  bowMarketWithOneBow: {fileID: 4443053454848633450, guid: f008a1026c1d62c4483829c95b9f8586, type: 3}
-  bowMarketWithTwoBow: {fileID: 4584420482694712890, guid: 72b63d20a2f7d4c49968eae500581a9d, type: 3}
-  bowMarketWithThreeBow: {fileID: 3976954536617030622, guid: af0f18ecb9948b743b8d1d0a20870991, type: 3}
-  bowMarketWithFourBow: {fileID: 3090822727478139076, guid: d5fe38a945c4f33498126dfd6d83566c, type: 3}
-  hammerMarketWithOneHammer: {fileID: 201980608398109186, guid: cd705c965a3ac04409e53287e91265f6, type: 3}
-  hammerMarketWithTwoHammer: {fileID: 4818900356283532851, guid: 908f819513ac09b44aaf1daf658a21c7, type: 3}
-  hammerMarketWithThreeHammer: {fileID: 6672042444128539015, guid: d31e3245999a3734d986efa95cab439a, type: 3}
-  hammerMarketWithFourHammer: {fileID: 4718010695874847911, guid: e3432a2801165454495d2db2ca70e8f7, type: 3}
-  markedTree: {fileID: 8346668837758427283, guid: c6eff41c57f5e5b44a936a92e8e40152, type: 3}
-  scaffold0: {fileID: 8935960435986996810, guid: af4b89b69e36494479ebaf9ee5b094f2, type: 3}
-  scaffold1: {fileID: 3136982222578111989, guid: 5851af1f793712944a74dc1d1de5b130, type: 3}
+  payButtonIsPressed: 0

@@ -25,6 +25,7 @@ public class BowMarketZero : MonoBehaviour
     private int actualLevelOfMarket;
     private int requiredCoinsForUpgrade = 2;
 
+    public event EventHandler OnBowPickedUp;
     public event EventHandler OnCallPeasent;
     public event EventHandler OnStopCallPeasent;
 
@@ -71,7 +72,7 @@ public class BowMarketZero : MonoBehaviour
             {
                 actualLevelOfMarket--;
                 ChangerToAnotherLvl();
-                //Debug.Log("Peasent has picked up a tool, lvl of market has changed to " + actualLevelOfMarket);
+                OnBowPickedUp?.Invoke(this, EventArgs.Empty);
             }
         }
     }

@@ -25,7 +25,6 @@ public class Portal : MonoBehaviour
         numberOfDays++;
         amountOfWave = Mathf.Round(Mathf.Log(numberOfDays, 1.5f));
         SpawnWave();
-        Debug.Log(amountOfWave);
     }
 
 
@@ -40,7 +39,8 @@ public class Portal : MonoBehaviour
         if (amountOfWave > 0)
         {
             amountOfWave--;
-            Instantiate(troll, new Vector2(transform.position.x, 0.32f), Quaternion.identity);
+            Instantiate(troll, new Vector2(transform.position.x, 0.52f), Quaternion.identity);
+            Debug.Log("Troll has spawned");
         }
         else
             CancelInvoke("SpawnTroll");

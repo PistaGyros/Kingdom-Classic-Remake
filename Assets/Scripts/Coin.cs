@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Coin : MonoBehaviour
 {
     Collider2D coinCollider;
+    private Rigidbody2D coinRigidbody2D;
+    private int[] oneAndMinusOne = new int[4] {-1, -1, 1, 1};
+    private Random rnd = new Random();
+    
 
     void Start()
     {
         coinCollider = GetComponentInParent<Collider2D>();
+        coinRigidbody2D = GetComponentInParent<Rigidbody2D>();
+        int r = rnd.Next(0, 3);
+        coinRigidbody2D.AddForce(new Vector2(oneAndMinusOne[r] * 75, 100));
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         
     }

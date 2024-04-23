@@ -8,26 +8,32 @@ using UnityEngine.Rendering.Universal;
 public class DayAndNightCycleBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject globalLight;
-    [SerializeField] Gradient lightColour;
+    [SerializeField] private Gradient lightColour;
 
     Light2D globalLightComponent;
 
-    private int days;
+    public int days;
 
-    public int Days => days;
+    //public int Days => days;
 
-    private float time = 0f;
+    public float time = 0f;
 
     private bool canChangeToNextDay = true;
     private bool canChangeToSunrise = true;
     private bool canChangeToSunset = true;
     private bool canChangeToMoonrise = true;
-    private bool canChangeToMoonset = true;
+    private bool canChangeToMoonSet = true;
 
+    public event EventHandler OnChangeToSunRise;
+    public event EventHandler OnChangeToSunSet;
     public event EventHandler OnChangeToMoonrise;
-    public event EventHandler OnChangeToNextDay; 
+    public event EventHandler <ChangeToNextDayArgs> OnChangeToNextDay;
 
 
+    public class ChangeToNextDayArgs : EventArgs
+    {
+        public int actualDay;
+    }
 
 
     private void Start()
@@ -41,7 +47,7 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
         PartsOfDayChanges();   
 
         time += Time.fixedDeltaTime;
-        
+        //Debug.Log("Actual time: " + time);
 
         globalLightComponent.color = lightColour.Evaluate(time * 0.0041322314049587f);
 
@@ -59,36 +65,43 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
             canChangeToSunrise = true;
             canChangeToSunset = true;
             canChangeToMoonrise = true;
-            canChangeToMoonset = true;
+            canChangeToMoonSet = true;
             canChangeToNextDay = true;
-            OnChangeToNextDay?.Invoke(this, EventArgs.Empty);
+            OnChangeToNextDay?.Invoke(this, new ChangeToNextDayArgs{ actualDay = days });
         }
 
         else if (canChangeToSunrise && time >= 20f)
         {
             canChangeToSunrise = false;
+            OnChangeToSunRise?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Actual time: " + time);
         }
 
         else if (canChangeToSunset && time >= 90f)
         {
+            OnChangeToSunSet?.Invoke(this, EventArgs.Empty);
             canChangeToSunset = false;
+            Debug.Log("Actual time: " + time);
         }
 
         else if (canChangeToMoonrise && time >= 165f)
         {
             OnChangeToMoonrise?.Invoke(this, EventArgs.Empty);
             canChangeToMoonrise = false;
+            Debug.Log("Actual time: " + time);
         }
 
-        else if (canChangeToMoonset && time >= 205f)
+        else if (canChangeToMoonSet && time >= 205f)
         {
-            canChangeToMoonset = false;
+            canChangeToMoonSet = false;
+            Debug.Log("Actual time: " + time);
         }
 
         else if (canChangeToNextDay && time >= 240f)
         {
             canChangeToNextDay = false;
             days++;
+            Debug.Log("Actual time: " + time);
         }
     }
 }

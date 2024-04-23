@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.050476074, y: -1.5774109}
+  m_Offset: {x: -0.050476074, y: -1.6628792}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91420746, y: 1.6451783}
+  m_Size: {x: 0.91420746, y: 1.8161149}
   m_EdgeRadius: 0
 --- !u!114 &7458087399317768898
 MonoBehaviour:
@@ -147,4 +147,3 @@ MonoBehaviour:
   markedSprite: {fileID: -888506458, guid: 6f93884cab8e3b447a8c77deca454f5f, type: 3}
   treeWOutline: {fileID: 1278551562, guid: d77bf494c29bd5f41ab3beac829019e2, type: 3}
   coin: {fileID: 2022387852028230222, guid: 9cafb947f4b5dbc46958e7985473c3d4, type: 3}
-  player: {fileID: 0}

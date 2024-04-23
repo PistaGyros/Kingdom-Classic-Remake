@@ -29,6 +29,15 @@ TagManager:
   - Wall
   - MarkedWall
   - EmptyWall
+  - EastBorder
+  - WestBorder
+  - FreeArcher
+  - PositionForArchers
+  - BeggarsCamp
+  - TaxChest
+  - DestroyedWall
+  - DeadBunny
+  - DeadTroll
   layers:
   - Default
   - TransparentFX
@@ -38,7 +47,7 @@ TagManager:
   - UI
   - Coin
   - Trolls
-  - 
+  - Wall
   - 
   - 
   - 
