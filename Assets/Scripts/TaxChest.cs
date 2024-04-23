@@ -11,7 +11,7 @@ public class TaxChest : MonoBehaviour
     [SerializeField] private GameObject coin;
     private GameObject globalLight; 
 
-    private int[] amountOfTaxCoins = new int[] {0, 5, 6, 6, 7, 4, 1};
+    private int[] amountOfTaxCoins = new int[7] {0, 5, 6, 6, 7, 4, 1};
     private int townCenterLvl;
     private int amountOfSpawnedCoins;
     private bool chestIsReadyAgain;
@@ -60,9 +60,7 @@ public class TaxChest : MonoBehaviour
         chestSpriteRenderer.enabled = false;
         // TODO: add some animation or so...
     }
-    
-    // FIX THIS 
-    
+
     private void SpawnCoins()
     {
         if (amountOfSpawnedCoins <= amountOfTaxCoins[townCenterLvl])

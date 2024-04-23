@@ -4,9 +4,11 @@
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/Tax Chest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/Tax Chest.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Coin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Coin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Folder.DotSettings.user.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TaxChest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TaxChest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,9 @@
       <workItem from="1713603268225" duration="21456000" />
       <workItem from="1713693882173" duration="31232000" />
       <workItem from="1713814227995" duration="3602000" />
+      <workItem from="1713896739956" duration="382000" />
+      <workItem from="1713897291069" duration="665000" />
+      <workItem from="1713898122418" duration="237000" />
     </task>
     <servers />
   </component>
