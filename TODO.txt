@@ -24,6 +24,7 @@ Funcional stuff:
 [x] add enemies
 [x] add portals
 [x] add tax chest
+[x] add bunnies
 []  add coin pickup animation
 []  add castle with upgrades
 []  add scythe market
@@ -32,7 +33,6 @@ Funcional stuff:
 []  add water
 []  add animation and stuff for borders
 [--]add meadow mechanic
-[--]add bunnies
 [-] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 Enviroment:
