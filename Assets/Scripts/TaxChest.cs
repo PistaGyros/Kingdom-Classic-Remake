@@ -52,7 +52,7 @@ public class TaxChest : MonoBehaviour
         chestIsReadyAgain = false;
         chestCollider.enabled = false;
         Invoke("Deactivate", 3f);
-        InvokeRepeating("SpawnCoins", 0f, 0.5f);
+        InvokeRepeating("SpawnCoins", 0f, 0.2f);
     }
 
     private void Deactivate()
@@ -72,6 +72,7 @@ public class TaxChest : MonoBehaviour
         }
         else
         {
+            CancelInvoke("SpawnCoins");
             amountOfSpawnedCoins = 0;
         }
     }

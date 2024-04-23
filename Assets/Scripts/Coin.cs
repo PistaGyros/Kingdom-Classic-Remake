@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
         coinCollider = GetComponentInParent<Collider2D>();
         coinRigidbody2D = GetComponentInParent<Rigidbody2D>();
         int randomInt = rnd.Next(0, 3);
-        coinRigidbody2D.AddForce(new Vector2(oneAndMinusOne[randomInt] * 1, 2));
+        coinRigidbody2D.AddForce(new Vector2(oneAndMinusOne[randomInt] * 5, 10));
     }
 
     
