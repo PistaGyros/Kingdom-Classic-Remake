@@ -25,6 +25,7 @@ Funcional stuff:
 [x] add portals
 [x] add tax chest
 [x] add bunnies
+[x] add archer update overhaul
 []  add coin pickup animation
 []  add castle with upgrades
 []  add scythe market
@@ -34,7 +35,6 @@ Funcional stuff:
 []  add animation and stuff for borders
 [--]add meadow mechanic
 [-] add last wall mechanic (borders of kingdom)
-[-] add archer update overhaul
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
@@ -59,3 +59,6 @@ Rework & overhaul:
 [x] rework pay system with calls for NPCs
 [-] rework trees (add outline)
 [x] rework arrows
+---------------------------------------------------------------------------------
+Things to add in Beta:
+[]  add sprint and patches of grass mechanic
