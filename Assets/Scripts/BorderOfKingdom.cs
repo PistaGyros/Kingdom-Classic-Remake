@@ -12,6 +12,8 @@ public class BorderOfKingdom : MonoBehaviour
     private Vector2 positionOfCalledWall;
 
     private bool isEast;
+
+    public event EventHandler OnPosOfBorderHasChanged;
     
 
     void Start()
@@ -54,5 +56,6 @@ public class BorderOfKingdom : MonoBehaviour
             transform.position = new Vector2(listOfWalls[0].transform.position.x + 2.5f, transform.position.y);
         else
             transform.position = new Vector2(listOfWalls[^1].transform.position.x - 2.5f, transform.position.y);
+        OnPosOfBorderHasChanged?.Invoke(this, EventArgs.Empty);
     }
 }

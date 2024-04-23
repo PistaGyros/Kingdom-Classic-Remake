@@ -39,6 +39,7 @@ public class BunnyBehaviour : MonoBehaviour
     {
         if (collider2D.CompareTag("Arrow"))
         {
+            gameObject.tag = "DeadBunny";
             Destroy(gameObject, 1f);
             bunnySprite.sprite = deadBunnySprite;
             Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);

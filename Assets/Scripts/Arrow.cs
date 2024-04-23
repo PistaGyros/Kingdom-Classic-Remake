@@ -33,10 +33,7 @@ public class Arrow : MonoBehaviour
     private void Start()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        originalCords = gameObject.transform.parent.position;
-        positionOfTarget = arrowShooter.GetComponent<ArrowShooter>().targetPos;
-        targetX = positionOfTarget.x;
-        startX = transform.position.x;        
+        startX = transform.position.x;
         timeLeft = 2.9f;
     }
 
@@ -44,6 +41,8 @@ public class Arrow : MonoBehaviour
     {
         if (shooted)
         {
+            positionOfTarget = arrowShooter.GetComponent<ArrowShooter>().targetPos;
+            targetX = positionOfTarget.x;
             Vector3 position = transform.position;
             dist = targetX - startX;
             nextX = Mathf.MoveTowards(position.x, targetX, speed * Time.deltaTime);
@@ -60,7 +59,7 @@ public class Arrow : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            transform.position = originalCords;
+            transform.position = archer.transform.position;
             gameObject.SetActive(false);
             boxCollider2D.enabled = true;
         }

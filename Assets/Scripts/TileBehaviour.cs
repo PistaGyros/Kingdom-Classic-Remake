@@ -78,7 +78,7 @@ public class TileBehaviour : MonoBehaviour
         else if (collider2D.CompareTag("Bunnies"))
         {
             actualNumBun++;   
-            Debug.Log("Bunny");
+            //Debug.Log("Bunny");
         }
     }
 

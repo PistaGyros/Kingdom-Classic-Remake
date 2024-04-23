@@ -46,7 +46,14 @@ public class ArcherBehaviour : MonoBehaviour
             {
                 ReturnToBorders();
             }
+            BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
+            borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
         }
+    }
+
+    private void BorderOfKingdomOnOnPosOfBorderHasChanged(object sender, EventArgs e)
+    {
+        
     }
 
     private void GeneralHandlerOnGoToEast(object sender, EventArgs e)
@@ -142,6 +149,7 @@ public class ArcherBehaviour : MonoBehaviour
             archerDirection = 1;
         else
             archerDirection = -1;
+        gameObject.transform.parent.localScale = new Vector2(archerDirection, 1);
     }
 
     private void Run()
@@ -152,7 +160,7 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void WaitForBorderToExist()
     {
-        if (homeBorder.transform.position.x > -1000)
+        if (homeBorder.transform.position.x > -10000)
         {
             ReturnToBorders();
             CancelInvoke("WaitForBorderToExist");

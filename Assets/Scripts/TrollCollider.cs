@@ -7,6 +7,8 @@ public class TrollCollider : MonoBehaviour
 {
     [SerializeField] private GameObject trollGrounder;
     private BoxCollider2D trollCollider2D;
+
+    [SerializeField] private Sprite deadSprite;
     
     private LayerMask coinLayerMask;
     private LayerMask wallLayerMask;
@@ -43,9 +45,9 @@ public class TrollCollider : MonoBehaviour
     {
         if (collision2D.CompareTag("Arrow"))
         {
-            hitPoints -= 1;
-            if (hitPoints <= 0)
-                Destroy(transform.parent.gameObject);
+            transform.tag = "DeadTroll";
+            Destroy(transform.parent.gameObject, 1f);
+            // TODO: change sprite to dead sprite
         }
         else if (collision2D.CompareTag("Wall") || collision2D.CompareTag("WallUnderAttack"))
         {

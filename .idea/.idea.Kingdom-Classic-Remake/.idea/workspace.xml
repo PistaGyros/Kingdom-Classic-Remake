@@ -3,12 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Builder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Builder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Coin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Coin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Folder.DotSettings.user.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TaxChest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TaxChest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BorderOfKingdom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BorderOfKingdom.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +91,7 @@
       <workItem from="1713814227995" duration="3602000" />
       <workItem from="1713896739956" duration="382000" />
       <workItem from="1713897291069" duration="665000" />
-      <workItem from="1713898122418" duration="237000" />
+      <workItem from="1713898122418" duration="11730000" />
     </task>
     <servers />
   </component>

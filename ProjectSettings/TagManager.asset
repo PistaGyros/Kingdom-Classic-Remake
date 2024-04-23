@@ -36,6 +36,8 @@ TagManager:
   - BeggarsCamp
   - TaxChest
   - DestroyedWall
+  - DeadBunny
+  - DeadTroll
   layers:
   - Default
   - TransparentFX
