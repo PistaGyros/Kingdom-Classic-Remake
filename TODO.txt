@@ -49,6 +49,7 @@ Art:
 [x] add forest tiles
 []  add city grass tiles
 []  add boulders (foundation for towers)
+[]  add town center tiers
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
