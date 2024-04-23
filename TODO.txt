@@ -23,6 +23,7 @@ Funcional stuff:
 [x] add camps with beggars
 [x] add enemies
 [x] add portals
+[x] add tax chest
 []  add coin pickup animation
 []  add castle with upgrades
 []  add scythe market
@@ -33,7 +34,6 @@ Funcional stuff:
 [--]add meadow mechanic
 [--]add bunnies
 [-] add last wall mechanic (borders of kingdom)
-[-] add tax chest
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
