@@ -50,7 +50,7 @@ Art:
 []  add city grass tiles
 []  add boulders (foundation for towers)
 []  add town center tiers
-    add animations for (builder[-], archer[], beggar[], farmer[], bunny[], peasent[])
+    add animations for (builder[-], archer[x], beggar[], farmer[], bunny[x], peasent[])
 []  add working animation for builder
 --------------------------------------------------------------------------------
 UI:
