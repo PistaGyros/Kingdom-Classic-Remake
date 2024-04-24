@@ -10,7 +10,7 @@ public class GeneralHandler : MonoBehaviour
 {
     [SerializeField] private GameObject bowMarket;
     [SerializeField] private GameObject globalLight;
-    private GameObject[] archers = null;
+    private GameObject[] archers;
 
     private List<GameObject> archersOnEast = new List<GameObject>();
     private List<GameObject> archersOnWest = new List<GameObject>();
@@ -48,17 +48,21 @@ public class GeneralHandler : MonoBehaviour
     private void FindFreeArchers()
     {
         archers = GameObject.FindGameObjectsWithTag("FreeArcher");
+        Debug.Log("OK");
         foreach (GameObject archer in archers)
         {
+            Debug.Log("OK");
             if (archersOnEast.Count <= archersOnWest.Count)
             {
+                Debug.Log("OK");
                 archersOnEast.Add(archer);
-                archer.GetComponent<ArcherBehaviour>().Invoke("NewEastBorder", 0f);
+                archer.GetComponentInChildren<ArcherBehaviour>().Invoke("NewEastBorder", 0.5f);
             }
             else
             {
+                Debug.Log("OK");
                 archersOnWest.Add(archer);
-                archer.GetComponent<ArcherBehaviour>().Invoke("NewWestBorder", 0f);
+                archer.GetComponentInChildren<ArcherBehaviour>().Invoke("NewWestBorder", 0.5f);
             }
         }
     }

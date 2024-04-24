@@ -3,14 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Builder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Builder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Archer.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Archer.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_idle.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_idle.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_shooting.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_shooting.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_shooting.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_shooting.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_walking.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_walking.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/archer_walking.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/archer_walking.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArrowShooter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +92,7 @@
       <workItem from="1713896739956" duration="382000" />
       <workItem from="1713897291069" duration="665000" />
       <workItem from="1713898122418" duration="11910000" />
-      <workItem from="1713941967439" duration="5873000" />
+      <workItem from="1713941967439" duration="10761000" />
     </task>
     <servers />
   </component>

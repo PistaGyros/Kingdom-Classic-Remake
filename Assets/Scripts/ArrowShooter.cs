@@ -15,8 +15,8 @@ public class ArrowShooter : MonoBehaviour
 
     private float timeToShootAgain = 5f;
     private bool canShoot = false;
-    private bool bunnyListIsEmpty;
-    private bool enemiesListIsEmpty;
+    private bool bunnyListIsEmpty = true;
+    private bool enemiesListIsEmpty = true;
     private string isShooting = "IsShooting";
 
     void Start()
@@ -27,7 +27,7 @@ public class ArrowShooter : MonoBehaviour
     private void FixedUpdate()
     {
         timeToShootAgain += Time.fixedDeltaTime;
-        if (timeToShootAgain >= 2f)
+        if (timeToShootAgain >= 2.2f)
             canShoot = true;
         if (canShoot && enemiesTargetList.Count >= 1)
         {
@@ -89,13 +89,13 @@ public class ArrowShooter : MonoBehaviour
         timeToShootAgain = 0;
         if (target != null)
             targetPos = target.transform.position;
-        Invoke("Shooting", 1f);
+        Invoke("Shooting", 0.5f);
     }
 
     private void Shooting()
     {
         arrow.SetActive(true);
         arrow.GetComponent<Arrow>().shooted = true;
-        arrow.GetComponent<Arrow>().timeLeft = 1.9f;
+        arrow.GetComponent<Arrow>().timeLeft = 2.1f;
     }
 }

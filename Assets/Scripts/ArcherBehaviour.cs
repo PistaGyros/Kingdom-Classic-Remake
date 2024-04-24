@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class ArcherBehaviour : MonoBehaviour
@@ -16,6 +17,9 @@ public class ArcherBehaviour : MonoBehaviour
     private int archerSpeed = 5;
     private int archerDirection;
     private string isWalking = "IsWalking";
+
+    private bool borderDoesExist;
+    private bool isAtHisStation;
 
 
 
@@ -45,7 +49,8 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void ChangeToSunSetOnOnChangeToSunSet(object sender, EventArgs e)
     {
-        ReturnToBorders();
+        if (borderDoesExist)
+            ReturnToBorders();
     }
 
 
@@ -71,14 +76,15 @@ public class ArcherBehaviour : MonoBehaviour
         {
             archerDirection = 0;
             archerAnimator.SetBool("IsWalking", false);
+            isAtHisStation = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("Player"))
+        if (collider2D.CompareTag("PositionForArchers"))
         {
-            
+            isAtHisStation = false;
         }
     }
 
@@ -116,14 +122,15 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void ReturnToBorders()
     {
-        BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
-        borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
-        if (transform.position.x < homeBorder.transform.position.x)
-            archerDirection = 1;
-        else
-            archerDirection = -1;
-        gameObject.transform.parent.localScale = new Vector2(archerDirection, 1);
-        archerAnimator.SetBool("IsWalking", true);
+        if (!isAtHisStation)
+        {
+            if (transform.position.x < homeBorder.transform.position.x)
+                archerDirection = 1;
+            else
+                archerDirection = -1;
+            gameObject.transform.parent.localScale = new Vector2(archerDirection, 1);
+            archerAnimator.SetBool("IsWalking", true);
+        }
     }
 
     private void Run()
@@ -134,10 +141,11 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void WaitForBorderToExist()
     {
-        if (homeBorder.transform.position.x > -1000)
+        if (homeBorder.transform.position.x > -10000)
         {
-            ReturnToBorders();
+            borderDoesExist = true;
             CancelInvoke("WaitForBorderToExist");
+            ReturnToBorders();
         }
     }
 
@@ -145,14 +153,19 @@ public class ArcherBehaviour : MonoBehaviour
     {
         if (transform.parent.CompareTag("FreeArcher"))
         {
-            homeBorder = GameObject.Find("EastBordersOfKingdom");
+            Debug.Log("OK");
             transform.parent.gameObject.tag = "Archer";
+            homeBorder = GameObject.Find("EastBordersOfKingdom");
+            BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
+            borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
             if (homeBorder.transform.position.x <= -1000)
             {
                 InvokeRepeating("WaitForBorderToExist", 0f, 5f);
+                borderDoesExist = false;
             }
             else
             {
+                borderDoesExist = true;
                 ReturnToBorders();
             }
         }
@@ -160,16 +173,21 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void NewWestBorder()
     {
+        Debug.Log("OK");
         if (transform.parent.CompareTag("FreeArcher"))
         {
-            homeBorder = GameObject.Find("WestBordersOfKingdom");
             transform.parent.gameObject.tag = "Archer";
+            homeBorder = GameObject.Find("WestBordersOfKingdom");
+            BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
+            borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
             if (homeBorder.transform.position.x <= -1000)
             {
                 InvokeRepeating("WaitForBorderToExist", 0f, 5f);
+                borderDoesExist = false;
             }
             else
             {
+                borderDoesExist = true;
                 ReturnToBorders();
             }
         }
