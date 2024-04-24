@@ -11,26 +11,33 @@ public class ArrowShooter : MonoBehaviour
     private List<Collider2D> bunnyTargetList = new List<Collider2D>();
     private List<Collider2D> enemiesTargetList = new List<Collider2D>();
 
+    private Animator archerAnimator;
+
     private float timeToShootAgain = 5f;
     private bool canShoot = false;
+    private bool bunnyListIsEmpty;
+    private bool enemiesListIsEmpty;
+    private string isShooting = "IsShooting";
 
     void Start()
     {
-        
+        archerAnimator = gameObject.GetComponentInParent<Animator>();
     }
 
     private void FixedUpdate()
     {
         timeToShootAgain += Time.fixedDeltaTime;
-        if (timeToShootAgain >= 3f)
+        if (timeToShootAgain >= 2f)
             canShoot = true;
         if (canShoot && enemiesTargetList.Count >= 1)
         {
             Shoot(enemiesTargetList[0]);
+            archerAnimator.SetBool("IsShooting", true);
         }
         else if (canShoot && bunnyTargetList.Count >= 1)
         {
             Shoot(bunnyTargetList[0]);
+            archerAnimator.SetBool("IsShooting", true);
         }
     }
 
@@ -57,10 +64,22 @@ public class ArrowShooter : MonoBehaviour
         if (collider2D.CompareTag("DeadBunny") || collider2D.CompareTag("Bunnies"))
         {
             bunnyTargetList.Remove(collider2D);
+            if (bunnyTargetList.Count <= 0)
+            {
+                bunnyListIsEmpty = true;
+            }
         }
         else if (collider2D.CompareTag("DeadTroll") || collider2D.CompareTag("TrollCollider"))
         {
             enemiesTargetList.Remove(collider2D);
+            if (enemiesTargetList.Count <= 0)
+            {
+                enemiesListIsEmpty = true;
+            }
+        }
+        if (bunnyListIsEmpty && enemiesListIsEmpty)
+        {
+            archerAnimator.SetBool("IsShooting", false);
         }
     }
 
@@ -77,6 +96,6 @@ public class ArrowShooter : MonoBehaviour
     {
         arrow.SetActive(true);
         arrow.GetComponent<Arrow>().shooted = true;
-        arrow.GetComponent<Arrow>().timeLeft = 2.9f;
+        arrow.GetComponent<Arrow>().timeLeft = 1.9f;
     }
 }

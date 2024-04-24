@@ -12,65 +12,30 @@ public class ArcherBehaviour : MonoBehaviour
     private GameObject globalLight;
     private GameObject homeBorder;
     private Rigidbody2D archerRigidbody2D;
+    private Animator archerAnimator;
     private int archerSpeed = 5;
     private int archerDirection;
+    private string isWalking = "IsWalking";
 
 
 
     void Start()
     {
         archerRigidbody2D = gameObject.GetComponentInParent<Rigidbody2D>();
+        archerAnimator = gameObject.GetComponentInParent<Animator>();
         canPickUp = true;
         globalLight = GameObject.Find("GlobalLight2D");
         
         // init of events
         GeneralHandler generalHandler = globalLight.GetComponent<GeneralHandler>();
-        generalHandler.GoToEast += GeneralHandlerOnGoToEast;
-        generalHandler.GoToWest += GeneralHandlerOnGoToWest;
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToNextDay += DayAndNightCycleBehaviourOnOnChangeToNextDay;
         dayAndNightCycleBehaviour.OnChangeToSunSet += ChangeToSunSetOnOnChangeToSunSet;
     }
-
-    private void GeneralHandlerOnGoToWest(object sender, EventArgs e)
-    {
-        if (transform.parent.CompareTag("FreeArcher"))
-        {
-            homeBorder = GameObject.Find("WestBordersOfKingdom");
-            transform.parent.gameObject.tag = "Archer";
-            if (homeBorder.transform.position.x <= -1000)
-            {
-                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
-            }
-            else
-            {
-                ReturnToBorders();
-            }
-            BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
-            borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
-        }
-    }
-
+    
     private void BorderOfKingdomOnOnPosOfBorderHasChanged(object sender, EventArgs e)
     {
         
-    }
-
-    private void GeneralHandlerOnGoToEast(object sender, EventArgs e)
-    {
-        if (transform.parent.CompareTag("FreeArcher"))
-        {
-            homeBorder = GameObject.Find("EastBordersOfKingdom");
-            transform.parent.gameObject.tag = "Archer";
-            if (homeBorder.transform.position.x <= -1000)
-            {
-                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
-            }
-            else
-            {
-                ReturnToBorders();
-            }
-        }
     }
 
     private void DayAndNightCycleBehaviourOnOnChangeToNextDay(object sender, EventArgs e)
@@ -95,7 +60,8 @@ public class ArcherBehaviour : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             canPickUp = false;
-            Invoke("TurnCanPickUpBackToTrue", 2f);
+            InvokeRepeating("DropCoin", 0f, 0.3f);
+            Invoke("PickUpAgain", 5f);
         }
         else if (collider2D.CompareTag("PlayerCoins") || collider2D.CompareTag("Coins"))
         {
@@ -104,16 +70,21 @@ public class ArcherBehaviour : MonoBehaviour
         else if (collider2D.CompareTag("PositionForArchers"))
         {
             archerDirection = 0;
+            archerAnimator.SetBool("IsWalking", false);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collider2D)
+    private void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("Player"))
         {
-            DropCoin();
-            Invoke("DropCoin", 0.5f);
+            
         }
+    }
+
+    private void PickUpAgain()
+    {
+        canPickUp = true;
     }
 
     private void PickUpCoin()
@@ -121,21 +92,21 @@ public class ArcherBehaviour : MonoBehaviour
         if (canPickUp)
         {
             numberOfCoins++;
+            archerAnimator.Play("PickUpCoin");
         }        
-    }
-
-    private void TurnCanPickUpBackToTrue()
-    {
-        canPickUp = true;
     }
 
     private void DropCoin()
     {
-        if (numberOfCoins > 0)
+        if (numberOfCoins >= 1)
         {
             numberOfCoins--;
             Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-        }        
+        }
+        else
+        {
+            CancelInvoke("DropCoin");
+        }
     }
 
     private void StartWander()
@@ -145,11 +116,14 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void ReturnToBorders()
     {
+        BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
+        borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
         if (transform.position.x < homeBorder.transform.position.x)
             archerDirection = 1;
         else
             archerDirection = -1;
         gameObject.transform.parent.localScale = new Vector2(archerDirection, 1);
+        archerAnimator.SetBool("IsWalking", true);
     }
 
     private void Run()
@@ -160,10 +134,44 @@ public class ArcherBehaviour : MonoBehaviour
 
     private void WaitForBorderToExist()
     {
-        if (homeBorder.transform.position.x > -10000)
+        if (homeBorder.transform.position.x > -1000)
         {
             ReturnToBorders();
             CancelInvoke("WaitForBorderToExist");
+        }
+    }
+
+    private void NewEastBorder()
+    {
+        if (transform.parent.CompareTag("FreeArcher"))
+        {
+            homeBorder = GameObject.Find("EastBordersOfKingdom");
+            transform.parent.gameObject.tag = "Archer";
+            if (homeBorder.transform.position.x <= -1000)
+            {
+                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
+            }
+            else
+            {
+                ReturnToBorders();
+            }
+        }
+    }
+
+    private void NewWestBorder()
+    {
+        if (transform.parent.CompareTag("FreeArcher"))
+        {
+            homeBorder = GameObject.Find("WestBordersOfKingdom");
+            transform.parent.gameObject.tag = "Archer";
+            if (homeBorder.transform.position.x <= -1000)
+            {
+                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
+            }
+            else
+            {
+                ReturnToBorders();
+            }
         }
     }
 }
