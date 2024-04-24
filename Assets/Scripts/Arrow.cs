@@ -76,10 +76,15 @@ public class Arrow : MonoBehaviour
         {
             timeLeft = -1f;
         }
-        else if (collider2D.CompareTag("TrollCollider"))
+        else if (collider2D.CompareTag("TrollCollider") || collider2D.CompareTag("DeadTroll"))
         {
-            Destroy(collider2D.transform.parent.gameObject);
-            timeLeft = -1f;
+            if (shooted)
+            {
+                shooted = false;
+                boxCollider2D.enabled = false;
+                Destroy(collider2D.transform.parent.gameObject, 0.75f);
+                timeLeft = -1f;   
+            }
         }
     }
 
