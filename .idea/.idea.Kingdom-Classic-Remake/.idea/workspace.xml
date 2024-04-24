@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrollCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Bunny.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Bunny.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Bunny.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Hills Layer 05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Hills Layer 05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ochmanilyy-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ochmanilyy-1.jpg.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +87,7 @@
       <workItem from="1713896739956" duration="382000" />
       <workItem from="1713897291069" duration="665000" />
       <workItem from="1713898122418" duration="11910000" />
-      <workItem from="1713941967439" duration="13386000" />
+      <workItem from="1713941967439" duration="15117000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,7 @@ public class BunnyBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject coin;
     private SpriteRenderer bunnySprite;
+    private Animator animatorBunny;
     [SerializeField] private Sprite deadBunnySprite;
     private Rigidbody2D bunnyRigidbody2D;
 
@@ -26,7 +27,9 @@ public class BunnyBehaviour : MonoBehaviour
     {
         bunnySprite = GetComponent<SpriteRenderer>();
         bunnyRigidbody2D = GetComponent<Rigidbody2D>();
-        InvokeRepeating("BunnyWander", 1f, 8f);
+        animatorBunny = GetComponent<Animator>();
+        int r = rnd.Next(5, 10);
+        Invoke("BunnyWander", r);
     }
 
     
@@ -51,7 +54,8 @@ public class BunnyBehaviour : MonoBehaviour
         int r = rnd.Next(0, 3);
         direction = possibleDirections[r];
         FlipSprite();
-        Invoke("BunnyStop", 0.5f);
+        animatorBunny.SetBool("IsMoving", true);
+        Invoke("BunnyStop", 1f);
     }
 
     private void BunnyMove()
@@ -63,6 +67,9 @@ public class BunnyBehaviour : MonoBehaviour
     private void BunnyStop()
     {
         direction = 0;
+        animatorBunny.SetBool("IsMoving", false);
+        int r = rnd.Next(7, 12);
+        Invoke("BunnyWander", r);
     }
 
     private void FlipSprite()
