@@ -100,6 +100,7 @@ public class PeasentPickUp : MonoBehaviour
         if (hammerMarket != null)
             direction = transform.position.x > hammerMarket.transform.position.x ? -1 : 1;
         animatorPeasent.SetBool("IsMoving", true);
+        transform.localScale = new Vector2(direction, 1);
     }
 
     private void RunForBow()
@@ -107,5 +108,6 @@ public class PeasentPickUp : MonoBehaviour
         if (bowMarket != null)
             direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
         animatorPeasent.SetBool("IsMoving", true);
+        transform.localScale = new Vector2(direction, 1);
     }
 }

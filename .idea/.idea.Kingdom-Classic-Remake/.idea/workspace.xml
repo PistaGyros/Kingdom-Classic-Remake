@@ -3,15 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Beggar.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Beggar.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Bunny.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Bunny.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Idle_Beggar.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Idle_Beggar.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/bunny_idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/bunny_idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Peasent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Peasent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Renderer/URP_renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Renderer/URP_renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BeggarPickUpCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BeggarPickUpCoin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BeggatsCamps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BeggatsCamps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PeasentPickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PeasentPickUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrollBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrollBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,7 @@
       <workItem from="1713896739956" duration="382000" />
       <workItem from="1713897291069" duration="665000" />
       <workItem from="1713898122418" duration="11910000" />
-      <workItem from="1713941967439" duration="16670000" />
+      <workItem from="1713941967439" duration="17553000" />
     </task>
     <servers />
   </component>

@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine.Rendering;
-using Random = System.Random;
 
 public class BunnyBehaviour : MonoBehaviour
 {

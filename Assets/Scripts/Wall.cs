@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor.Build.Reporting;
 using System.Runtime.CompilerServices;
 
 public class Wall : MonoBehaviour

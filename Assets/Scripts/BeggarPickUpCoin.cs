@@ -43,6 +43,7 @@ public class BeggarPickUpCoin : MonoBehaviour
             else
                 direction = 1;
             animatorBeggar.SetBool("IsMoving", true);
+            transform.localScale = new Vector2(direction, 1);
         }   
     }
 
