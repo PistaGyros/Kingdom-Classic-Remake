@@ -26,6 +26,7 @@ Funcional stuff:
 [x] add tax chest
 [x] add bunnies
 [x] add archer update overhaul
+[x] add last wall mechanic (borders of kingdom)
 []  add coin pickup animation
 []  add castle with upgrades
 []  add scythe market
@@ -34,7 +35,6 @@ Funcional stuff:
 []  add water
 []  add animation and stuff for borders
 [--]add meadow mechanic
-[-] add last wall mechanic (borders of kingdom)
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
@@ -50,6 +50,8 @@ Art:
 []  add city grass tiles
 []  add boulders (foundation for towers)
 []  add town center tiers
+    add animations for (builder[-], archer[], beggar[], farmer[], bunny[], peasent[])
+[]  add working animation for builder
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
@@ -62,3 +64,6 @@ Rework & overhaul:
 ---------------------------------------------------------------------------------
 Things to add in Beta:
 []  add sprint and patches of grass mechanic
+---------------------------------------------------------------------------------
+Interesting mechanic ideas:
+ARCHER WITH ONE STAR: when ther are more than for example 100 archers on one site, two archers become one with one star, this one star archer can for example shoot two arrows at once or smth like that...
