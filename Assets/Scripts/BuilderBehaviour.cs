@@ -23,8 +23,8 @@ public class BuilderBehaviour : MonoBehaviour
 
     private Animator builderAnimator;
 
-    // add coin drop mechanic when player comes to the builder
-    // maybe add priority mechanic
+    // TODO: add coin drop mechanic when player comes to the builder
+    // TODO: maybe add priority mechanic
 
     void Start()
     {
@@ -146,6 +146,7 @@ public class BuilderBehaviour : MonoBehaviour
         {
             // stopped building (working)
             isBussy = false;
+            Debug.Log(isBussy);
             builderAnimator.SetBool("IsBuilding", false);
         }
     }
@@ -158,5 +159,12 @@ public class BuilderBehaviour : MonoBehaviour
             builderAnimator.SetBool("IsWalking", true);
         else
             builderAnimator.SetBool("IsWalking", false);    
+    }
+
+    public void StopBuilding()
+    {
+        isBussy = false;
+        Debug.Log("isBussy = " + isBussy);
+        builderAnimator.SetBool("IsBuilding", false);
     }
 }

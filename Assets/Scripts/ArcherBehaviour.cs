@@ -17,18 +17,16 @@ public class ArcherBehaviour : MonoBehaviour
 
     private bool borderDoesExist;
     private bool isAtHisStation;
-
-
+    
 
     void Start()
     {
         archerRigidbody2D = gameObject.GetComponentInParent<Rigidbody2D>();
         archerAnimator = gameObject.GetComponentInParent<Animator>();
         canPickUp = true;
-        globalLight = GameObject.Find("GlobalLight2D");
-        
         // init of events
-        GeneralHandler generalHandler = globalLight.GetComponent<GeneralHandler>();
+        //GeneralHandler generalHandler = globalLight.GetComponent<GeneralHandler>(); ... remove if no more reliable
+        globalLight = GameObject.Find("GlobalLight2D");
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToNextDay += DayAndNightCycleBehaviourOnOnChangeToNextDay;
         dayAndNightCycleBehaviour.OnChangeToSunSet += ChangeToSunSetOnOnChangeToSunSet;
@@ -71,18 +69,16 @@ public class ArcherBehaviour : MonoBehaviour
         }
         else if (collider2D.CompareTag("PositionForArchers"))
         {
+            isAtHisStation = true;
             archerDirection = 0;
             archerAnimator.SetBool("IsWalking", false);
-            isAtHisStation = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("PositionForArchers"))
-        {
             isAtHisStation = false;
-        }
     }
 
     private void PickUpAgain()
@@ -107,14 +103,12 @@ public class ArcherBehaviour : MonoBehaviour
             Instantiate(coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         }
         else
-        {
             CancelInvoke("DropCoin");
-        }
     }
 
     private void StartWander()
     {
-        
+        //TODO: add this
     }
 
     private void ReturnToBorders()
@@ -150,43 +144,37 @@ public class ArcherBehaviour : MonoBehaviour
     {
         if (transform.parent.CompareTag("FreeArcher"))
         {
-            Debug.Log("OK");
             transform.parent.gameObject.tag = "Archer";
             homeBorder = GameObject.Find("EastBordersOfKingdom");
             BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
             borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
-            if (homeBorder.transform.position.x <= -1000)
-            {
-                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
-                borderDoesExist = false;
-            }
-            else
-            {
-                borderDoesExist = true;
-                ReturnToBorders();
-            }
+            DoesBorderExist();
         }
     }
 
     private void NewWestBorder()
     {
-        Debug.Log("OK");
         if (transform.parent.CompareTag("FreeArcher"))
         {
             transform.parent.gameObject.tag = "Archer";
             homeBorder = GameObject.Find("WestBordersOfKingdom");
             BorderOfKingdom borderOfKingdom = homeBorder.GetComponent<BorderOfKingdom>();
             borderOfKingdom.OnPosOfBorderHasChanged += BorderOfKingdomOnOnPosOfBorderHasChanged;
-            if (homeBorder.transform.position.x <= -1000)
-            {
-                InvokeRepeating("WaitForBorderToExist", 0f, 5f);
-                borderDoesExist = false;
-            }
-            else
-            {
-                borderDoesExist = true;
-                ReturnToBorders();
-            }
+            DoesBorderExist();
+        }
+    }
+
+    private void DoesBorderExist()
+    {
+        if (homeBorder.transform.position.x <= -1000)
+        {
+            InvokeRepeating("WaitForBorderToExist", 0f, 5f);
+            borderDoesExist = false;
+        }
+        else
+        {
+            borderDoesExist = true;
+            ReturnToBorders();
         }
     }
 }

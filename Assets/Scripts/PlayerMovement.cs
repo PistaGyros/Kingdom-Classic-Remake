@@ -39,21 +39,11 @@ public class PlayerMovement : MonoBehaviour
             cameraDelay -= Time.fixedDeltaTime;
             if (cameraDelay <= 0)
             {
-                if (lerpTime <= 3f)
-                {
-                    lerpTime += Time.fixedDeltaTime;
-                    virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX =
-                        Mathf.Lerp(0.5f, cameraDirection, lerpTime);
-                }
+                ShiftCamera();
             }
             else
             {
-                if (lerpTime >= 0)
-                {
-                    lerpTime -= Time.fixedDeltaTime;
-                    virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX =
-                        Mathf.Lerp(0.5f, cameraDirection, lerpTime);
-                }
+                ShiftCameraBack();
             }
         }
     }
@@ -82,6 +72,26 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetBool("IsWalking", true);
             cameraDelay = 5f;
             lerpTime = 0;
+        }
+    }
+
+    private void ShiftCamera()
+    {
+        if (lerpTime <= 3f)
+        {
+            lerpTime += Time.fixedDeltaTime;
+            virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX =
+                Mathf.Lerp(0.5f, cameraDirection, lerpTime);           
+        }
+    }
+
+    private void ShiftCameraBack()
+    {
+        if (lerpTime >= 0)
+        {
+            lerpTime -= Time.fixedDeltaTime;
+            virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX =
+                Mathf.Lerp(0.5f, cameraDirection, lerpTime);
         }
     }
 }
