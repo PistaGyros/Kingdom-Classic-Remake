@@ -52,7 +52,7 @@ Art:
 []  add boulders (foundation for towers)
 []  add town center tiers
     add animations for (builder[-], archer[x], beggar[x], farmer[], bunny[x], peasent[x])
-[]  add working animation for builder
+[x] add working animation for builder
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
