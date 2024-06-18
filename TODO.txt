@@ -37,6 +37,9 @@ Funcional stuff:
 []  add pathces of grass
 []  add archer wander mechanic
 [--]add meadow mechanic
+[]  add water with reflection
+[]  add farm's rivers
+[]  add farms mechanic
 --------------------------------------------------------------------------------
 Enviroment:
 []  add coin idle animation
