@@ -28,6 +28,7 @@ public class PeasentPickUp : MonoBehaviour
         BowMarketZero callPeasentToBow = bowMarket.GetComponent<BowMarketZero>();
         callPeasentToBow.OnCallPeasent += CallPeasentToBow_OnCallPeasent;
         callPeasentToBow.OnStopCallPeasent += CallPeasentToBow_OnStopCallPeasent;
+        RunToKingdomCenter();
     }
 
     private void CallPeasentToBow_OnStopCallPeasent(object sender, System.EventArgs e)
@@ -67,7 +68,7 @@ public class PeasentPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        //After it pick ups a tool, it gets a new profession
+        //After it picks up a tool, it gets a new profession
         if (collider2D.CompareTag("OpenBowMarket"))
         {
             Instantiate(archer, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
@@ -86,6 +87,11 @@ public class PeasentPickUp : MonoBehaviour
         {
             numberOfCoinsOfPeasent += 1;
         }
+        else if (collider2D.CompareTag("TownCenter1"))
+        {
+            direction = 0;
+            animatorPeasent.SetBool("IsMoving", false);
+        }
     }
 
 
@@ -93,6 +99,12 @@ public class PeasentPickUp : MonoBehaviour
     {
         Vector2 peasentVelocity = new Vector2(direction, 0);
         rigidbody2D.velocity = peasentVelocity * peasentSpeed;
+    }
+
+    private void RunToKingdomCenter()
+    {
+        direction = transform.position.x > 0 ? -1 : 1;
+        animatorPeasent.SetBool("IsMoving", true);
     }
 
     private void RunForHammer()

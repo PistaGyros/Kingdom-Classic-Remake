@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Builder.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Builder.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BunnyBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PeasentPickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PeasentPickUp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +86,8 @@
       <workItem from="1713897291069" duration="665000" />
       <workItem from="1713898122418" duration="11910000" />
       <workItem from="1713941967439" duration="27778000" />
-      <workItem from="1714051492820" duration="8488000" />
+      <workItem from="1714051492820" duration="9681000" />
+      <workItem from="1718723189010" duration="4260000" />
     </task>
     <servers />
   </component>
