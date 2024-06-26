@@ -38,6 +38,8 @@ TagManager:
   - DestroyedWall
   - DeadBunny
   - DeadTroll
+  - ScytheMarket
+  - OpenScytheMarket
   layers:
   - Default
   - TransparentFX
