@@ -39,7 +39,7 @@ public class Portal : MonoBehaviour
         if (amountOfWave > 0)
         {
             amountOfWave--;
-            Instantiate(troll, new Vector2(transform.position.x, 0.52f), Quaternion.identity);
+            Instantiate(troll, new Vector2(transform.position.x, 0.55f), Quaternion.identity);
             Debug.Log("Troll has spawned");
         }
         else

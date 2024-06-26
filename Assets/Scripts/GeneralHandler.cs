@@ -10,19 +10,17 @@ public class GeneralHandler : MonoBehaviour
 {
     [SerializeField] private GameObject bowMarket;
     [SerializeField] private GameObject globalLight;
-    private GameObject archer = null;
+    private GameObject[] archers;
 
     private List<GameObject> archersOnEast = new List<GameObject>();
     private List<GameObject> archersOnWest = new List<GameObject>();
 
     private int actualDay;
 
-    public event EventHandler GoToEast;
-    public event EventHandler GoToWest;
-    
-    
+
     void Start()
     {
+        FindFreeArchers();
         bowMarket = GameObject.Find("BowMarket");
         BowMarketZero market = bowMarket.GetComponent<BowMarketZero>();
         market.OnBowPickedUp += MarketOnOnBowPickedUp;
@@ -37,17 +35,7 @@ public class GeneralHandler : MonoBehaviour
 
     private void MarketOnOnBowPickedUp(object sender, EventArgs e)
     {
-        archer = GameObject.FindWithTag("FreeArcher");
-        if (archersOnEast.Count <= archersOnWest.Count)
-        {
-            Invoke("GoToEastBorders", 1f);
-            archersOnEast.Add(archer);
-        }
-        else
-        {
-            Invoke("GoToWestBorders", 1f);
-            archersOnWest.Add(archer);
-        }
+        FindFreeArchers();
     }
 
 
@@ -55,14 +43,27 @@ public class GeneralHandler : MonoBehaviour
     {
         
     }
+    
 
-    private void GoToEastBorders()
+    private void FindFreeArchers()
     {
-        GoToEast?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void GoToWestBorders()
-    {
-        GoToWest?.Invoke(this, EventArgs.Empty);
+        archers = GameObject.FindGameObjectsWithTag("FreeArcher");
+        Debug.Log("OK");
+        foreach (GameObject archer in archers)
+        {
+            Debug.Log("OK");
+            if (archersOnEast.Count <= archersOnWest.Count)
+            {
+                Debug.Log("OK");
+                archersOnEast.Add(archer);
+                archer.GetComponentInChildren<ArcherBehaviour>().Invoke("NewEastBorder", 0.5f);
+            }
+            else
+            {
+                Debug.Log("OK");
+                archersOnWest.Add(archer);
+                archer.GetComponentInChildren<ArcherBehaviour>().Invoke("NewWestBorder", 0.5f);
+            }
+        }
     }
 }

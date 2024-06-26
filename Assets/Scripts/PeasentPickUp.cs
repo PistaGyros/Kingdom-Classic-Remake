@@ -11,6 +11,7 @@ public class PeasentPickUp : MonoBehaviour
     [SerializeField] GameObject bowMarket;
     private float peasentSpeed = 5f;
     private Rigidbody2D rigidbody2D;
+    private Animator animatorPeasent;
     private float direction;
     private int numberOfCoinsOfPeasent;
 
@@ -18,6 +19,7 @@ public class PeasentPickUp : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        animatorPeasent = GetComponent<Animator>();
         hammerMarket = GameObject.Find("HammerMarket");
         HammerMarketZero callPeasentToHammer = hammerMarket.GetComponent<HammerMarketZero>();
         callPeasentToHammer.OnCallPeasent += CallPeasent_OnCallPeasent;
@@ -26,12 +28,16 @@ public class PeasentPickUp : MonoBehaviour
         BowMarketZero callPeasentToBow = bowMarket.GetComponent<BowMarketZero>();
         callPeasentToBow.OnCallPeasent += CallPeasentToBow_OnCallPeasent;
         callPeasentToBow.OnStopCallPeasent += CallPeasentToBow_OnStopCallPeasent;
+        RunToKingdomCenter();
     }
 
     private void CallPeasentToBow_OnStopCallPeasent(object sender, System.EventArgs e)
     {
         if (this != null)
+        {
             direction = 0;
+            animatorPeasent.SetBool("IsMoving", false);
+        }
     }
 
     private void CallPeasentToBow_OnCallPeasent(object sender, System.EventArgs e)
@@ -43,7 +49,10 @@ public class PeasentPickUp : MonoBehaviour
     private void CallPeasent_OnStopCallPeasent(object sender, System.EventArgs e)
     {
         if (this != null)
+        {
             direction = 0;
+            animatorPeasent.SetBool("IsMoving", false);
+        }
     }
 
     private void CallPeasent_OnCallPeasent(object sender, System.EventArgs e)
@@ -59,7 +68,7 @@ public class PeasentPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        //After it pick ups a tool, it gets a new profession
+        //After it picks up a tool, it gets a new profession
         if (collider2D.CompareTag("OpenBowMarket"))
         {
             Instantiate(archer, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
@@ -78,6 +87,11 @@ public class PeasentPickUp : MonoBehaviour
         {
             numberOfCoinsOfPeasent += 1;
         }
+        else if (collider2D.CompareTag("TownCenter1"))
+        {
+            direction = 0;
+            animatorPeasent.SetBool("IsMoving", false);
+        }
     }
 
 
@@ -87,15 +101,25 @@ public class PeasentPickUp : MonoBehaviour
         rigidbody2D.velocity = peasentVelocity * peasentSpeed;
     }
 
+    private void RunToKingdomCenter()
+    {
+        direction = transform.position.x > 0 ? -1 : 1;
+        animatorPeasent.SetBool("IsMoving", true);
+    }
+
     private void RunForHammer()
     {
         if (hammerMarket != null)
             direction = transform.position.x > hammerMarket.transform.position.x ? -1 : 1;
+        animatorPeasent.SetBool("IsMoving", true);
+        transform.localScale = new Vector2(direction, 1);
     }
 
     private void RunForBow()
     {
         if (bowMarket != null)
             direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
+        animatorPeasent.SetBool("IsMoving", true);
+        transform.localScale = new Vector2(direction, 1);
     }
 }

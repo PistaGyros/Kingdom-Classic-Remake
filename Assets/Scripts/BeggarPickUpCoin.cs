@@ -7,17 +7,18 @@ public class BeggarPickUpCoin : MonoBehaviour
     Rigidbody2D rigidbody2D;
     float direction;
     [SerializeField] GameObject peasent;
-    
+    private Animator animatorBeggar;
 
 
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        animatorBeggar = GetComponent<Animator>();
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         RunForCoin();
     }
@@ -28,7 +29,7 @@ public class BeggarPickUpCoin : MonoBehaviour
         {
             direction = 0;
             Destroy(gameObject, 0f);
-            Instantiate(peasent, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);            
+            Instantiate(peasent, new Vector2(transform.position.x, 0.36f), Quaternion.identity);            
         }
     }
 
@@ -38,14 +39,12 @@ public class BeggarPickUpCoin : MonoBehaviour
         {
             //It checks if beggar is on the righ or on the left site of the coin or player coin
             if (transform.position.x > collider2D.transform.position.x)
-            {
                 direction = -1;
-            }
             else
-            {
                 direction = 1;
-            }
-        }
+            animatorBeggar.SetBool("IsMoving", true);
+            transform.localScale = new Vector2(direction, 1);
+        }   
     }
 
     private void OnTriggerExit2D(Collider2D collider2D)
@@ -53,6 +52,7 @@ public class BeggarPickUpCoin : MonoBehaviour
         if (collider2D.gameObject.CompareTag("CoinCall") || collider2D.gameObject.CompareTag("PlayerCoinCall"))
         {
             direction = 0;
+            animatorBeggar.SetBool("IsMoving", false);
         }
     }
 

@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor.Build.Reporting;
 using System.Runtime.CompilerServices;
 
 public class Wall : MonoBehaviour
 {
     [SerializeField] private GameObject scaffold;
     private GameObject playerCharacter;
+    private List<GameObject> assignedBuilders = new List<GameObject>();
     private BoxCollider2D boxCollider2D;
-    private LayerMask trollLayerMask;
-    private LayerMask nothing;
 
     [SerializeField] private Sprite baseForWall;
     [SerializeField] private Sprite wallLvlOne;
@@ -72,8 +70,6 @@ public class Wall : MonoBehaviour
     {
         transform.tag = "EmptyWall";
         startingPos = transform.position;
-        trollLayerMask = LayerMask.GetMask("Trolls");
-        nothing = LayerMask.GetMask("Default");
         boxCollider2D = GetComponent<BoxCollider2D>();
         playerCharacter = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -86,7 +82,6 @@ public class Wall : MonoBehaviour
     private void FixedUpdate()
     {
         // Debug.Log(HP);
-        playerCoins = playerCharacter.GetComponent<PickDropCoins>().numberOfCoins;
         playerPayButtonIsPressed = playerCharacter.GetComponent<PickDropCoins>().payButtonIsPressed;
 
         if (playerHasCollidedWithWall && playerPayButtonIsPressed && !payingHasBeggun && !wallIsUnderConstruction)
@@ -95,7 +90,7 @@ public class Wall : MonoBehaviour
             {
                 payingHasBeggun = true;
                 AmountOfRequiredCoinsForUpgrade();
-                StartInvoke();
+                InvokeRepeating("PayToWall", 0.2f, 0.5f);
             }
         }
         else if (!playerPayButtonIsPressed || !playerHasCollidedWithWall)
@@ -109,16 +104,26 @@ public class Wall : MonoBehaviour
         // wall has been constructed
         else if (buildTime < 0f && wallIsUnderConstruction && wallHasBeenMarked)
         {
-            wallIsUnderConstruction = false;
-            wallHasBeenMarked = false;
-            transform.tag = "Wall";
-            CancelInvoke("CallBuilderToWall");
-            scaffoldSpriteRenderer.enabled = false;
-            actualLvlOfWall++;
-            ChangerToAnotherLvl();
-            OnStopCallBuilderToWall?.Invoke(this, EventArgs.Empty);
-            WallHasBeenUpgraded?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
+            WallHasBeenConstructed();
         }
+    }
+
+    private void WallHasBeenConstructed()
+    {
+        wallIsUnderConstruction = false;
+        wallHasBeenMarked = false;
+        transform.tag = "Wall";
+        CancelInvoke("CallBuilderToWall");
+        scaffoldSpriteRenderer.enabled = false;
+        actualLvlOfWall++;
+        ChangerToAnotherLvl();
+        OnStopCallBuilderToWall?.Invoke(this, EventArgs.Empty);
+        WallHasBeenUpgraded?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
+        foreach (var builder in assignedBuilders)
+        {
+            builder.GetComponent<BuilderBehaviour>().StopBuilding();
+        }
+        assignedBuilders.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D collider2D)
@@ -136,18 +141,18 @@ public class Wall : MonoBehaviour
                 spriteRenderer.sprite = baseForWall;
                 transform.tag = "EmptyWall";
                 transform.position = startingPos;
-                //boxCollider2D.excludeLayers = trollLayerMask;
             }
         }
-        if (collider2D.CompareTag("Player"))
+        else if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithWall = true;
         }
-        if (collider2D.CompareTag("Builder"))
+        else if (collider2D.CompareTag("Builder"))
         {
             if (wallHasBeenMarked)
             {
                 wallIsUnderConstruction = true;
+                assignedBuilders.Add(collider2D.gameObject);
             }
         }
     }
@@ -175,11 +180,6 @@ public class Wall : MonoBehaviour
             wallIsUnderConstruction = false;
     }
 
-    private void StartInvoke()
-    {
-        InvokeRepeating("PayToWall", 0.2f, 0.5f);
-    }
-
     private void PayToWall()
     {
         if (!wallHasBeenMarked && playerCharacter.GetComponent<PickDropCoins>().numberOfCoins >= 1)
@@ -190,6 +190,7 @@ public class Wall : MonoBehaviour
             Debug.Log(amountOfPaidCoins);
             if (amountOfPaidCoins >= requiredCoinsForUpgrade & !wallHasBeenMarked)
             {
+                // paid
                 buildTime = 10f;
                 wallHasBeenMarked = true;
                 transform.tag = "MarkedWall";
@@ -222,42 +223,38 @@ public class Wall : MonoBehaviour
     
     private void ChangerToAnotherLvl()
     {
-        if (actualLvlOfWall == 0)
-            spriteRenderer.sprite = baseForWall;
-        else if (actualLvlOfWall == 1)
+        switch (actualLvlOfWall)
         {
-            spriteRenderer.sprite = wallLvlOne;
-            transform.position = new Vector2(transform.position.x, 0.64f);
-            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x , boxCollider2D.offset.y - 0.64f);
-            HP = hitPointsLvlOne;
-            halfOfFullHp = hitPointsLvlOne / 2;
-            //boxCollider2D.excludeLayers = nothing;
-        }            
-        else if (actualLvlOfWall == 2)
-        {
-            spriteRenderer.sprite = wallLvlTwo;
-            transform.position = new Vector2(transform.position.x, 0.85f);
-            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.21f);
-            HP = hitPointsLvlTwo;
-            halfOfFullHp = hitPointsLvlTwo / 2;
-            //boxCollider2D.excludeLayers = nothing;
-        }
-        else if (actualLvlOfWall == 3)
-        {
-            spriteRenderer.sprite = wallLvlThree;
-            transform.position = new Vector2(transform.position.x, 1.05f);
-            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.2f);
-            HP = hitPointsLvlThree;
-            halfOfFullHp = hitPointsLvlThree / 2;
-            //boxCollider2D.excludeLayers = nothing;
-        }
-        else if (actualLvlOfWall == 4)
-        {
-            spriteRenderer.sprite = wallLvlFour;
-            transform.position = new Vector2(transform.position.x, 1.22f);
-            boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.17f);
-            HP = hitPointsLvlFour;
-            //boxCollider2D.excludeLayers = nothing;
+            case 0:
+                spriteRenderer.sprite = baseForWall;
+                break;
+            case 1:
+                spriteRenderer.sprite = wallLvlOne;
+                transform.position = new Vector2(transform.position.x, 0.64f);
+                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x , boxCollider2D.offset.y - 0.64f);
+                HP = hitPointsLvlOne;
+                halfOfFullHp = hitPointsLvlOne / 2;
+                break;
+            case 2:
+                spriteRenderer.sprite = wallLvlTwo;
+                transform.position = new Vector2(transform.position.x, 0.85f);
+                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.21f);
+                HP = hitPointsLvlTwo;
+                halfOfFullHp = hitPointsLvlTwo / 2;
+                break;
+            case 3:
+                spriteRenderer.sprite = wallLvlThree;
+                transform.position = new Vector2(transform.position.x, 1.05f);
+                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.2f);
+                HP = hitPointsLvlThree;
+                halfOfFullHp = hitPointsLvlThree / 2;
+                break;
+            case 4:
+                spriteRenderer.sprite = wallLvlFour;
+                transform.position = new Vector2(transform.position.x, 1.22f);
+                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.17f);
+                HP = hitPointsLvlFour;
+                break;
         }
     }
     

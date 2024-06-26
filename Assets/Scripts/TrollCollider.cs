@@ -46,7 +46,6 @@ public class TrollCollider : MonoBehaviour
         if (collision2D.CompareTag("Arrow"))
         {
             transform.tag = "DeadTroll";
-            Destroy(transform.parent.gameObject, 1f);
             // TODO: change sprite to dead sprite
         }
         else if (collision2D.CompareTag("Wall") || collision2D.CompareTag("WallUnderAttack"))

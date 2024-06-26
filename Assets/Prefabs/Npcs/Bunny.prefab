@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2390103867245088187}
   - component: {fileID: 3137013675176824234}
   - component: {fileID: 2209116515147122372}
+  - component: {fileID: 7184133590744420483}
   m_Layer: 0
   m_Name: Bunny
   m_TagString: Bunnies
@@ -173,3 +174,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 2022387852028230222, guid: 9cafb947f4b5dbc46958e7985473c3d4, type: 3}
   deadBunnySprite: {fileID: -1466522732, guid: fb04413f0e1a119488d96286a2d7284d, type: 3}
+--- !u!95 &7184133590744420483
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140588599149445967}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90f37e87296671743bcada258d12eed3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

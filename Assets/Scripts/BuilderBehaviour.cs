@@ -5,7 +5,7 @@ using System.Data;
 
 public class BuilderBehaviour : MonoBehaviour
 {
-    [SerializeField] float builderSpeed;
+    private float builderSpeed = 4f;
     private GameObject[] umarkedTrees;
     private GameObject[] markedTrees;
     private GameObject[] walls;
@@ -21,12 +21,15 @@ public class BuilderBehaviour : MonoBehaviour
     private float sinTime;
     private Vector2 currentPos;
 
-    // add coin drop mechanic when player comes to the builder
-    // maybe add priority mechanic
+    private Animator builderAnimator;
+
+    // TODO: add coin drop mechanic when player comes to the builder
+    // TODO: maybe add priority mechanic
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        builderAnimator = GetComponent<Animator>();
         if (umarkedTrees == null)
             umarkedTrees = GameObject.FindGameObjectsWithTag("MarkableTrees");
         if (markedTrees == null)
@@ -125,8 +128,10 @@ public class BuilderBehaviour : MonoBehaviour
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || collider2D.CompareTag("WallUnderAttack"))
         {
+            // is building (working)
             isBussy = true;
             direction = 0;
+            builderAnimator.SetBool("IsBuilding", true);
         }
         else if (collider2D.CompareTag("Coins") || collider2D.CompareTag("PlayerCoins"))
         {
@@ -139,7 +144,10 @@ public class BuilderBehaviour : MonoBehaviour
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall"))
         {
+            // stopped building (working)
             isBussy = false;
+            Debug.Log(isBussy);
+            builderAnimator.SetBool("IsBuilding", false);
         }
     }
 
@@ -147,5 +155,16 @@ public class BuilderBehaviour : MonoBehaviour
     {
         Vector2 builderVelocity = new Vector2(direction, 0);
         rigidbody2D.velocity = builderVelocity * builderSpeed;
+        if (direction != 0)
+            builderAnimator.SetBool("IsWalking", true);
+        else
+            builderAnimator.SetBool("IsWalking", false);    
+    }
+
+    public void StopBuilding()
+    {
+        isBussy = false;
+        Debug.Log("isBussy = " + isBussy);
+        builderAnimator.SetBool("IsBuilding", false);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8045719076495175342}
   - component: {fileID: 1572803058170632975}
   - component: {fileID: 3719821592256918293}
+  - component: {fileID: 1272430249004439159}
   - component: {fileID: 838681229332216544}
   m_Layer: 0
   m_Name: Peasent
@@ -159,6 +160,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!95 &1272430249004439159
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059617659505457003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e7ac3d5450699b7439081c8e9c5c19c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &838681229332216544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +196,5 @@ MonoBehaviour:
   archer: {fileID: 9013257926843266530, guid: 0b2811c50ec53284d8e923ced4cf27e3, type: 3}
   builder: {fileID: 1685325074123754507, guid: 498a14686a86a0045beb237115171cd8, type: 3}
   farmer: {fileID: 1238059052126817855, guid: 4f4fbd6a5abb33742b8cba50cce18cee, type: 3}
+  hammerMarket: {fileID: 0}
+  bowMarket: {fileID: 0}
