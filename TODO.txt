@@ -17,6 +17,7 @@ Funcional stuff:
 [x] add arrow shoot by archer mechanic
 [x] add hammer market
 [x] add bow market
+[x] add scythe market
 [x] add cut down tree mechanic
 [x] add walls mechanic
 [x] add day&night cycle
@@ -27,14 +28,10 @@ Funcional stuff:
 [x] add bunnies
 [x] add archer update overhaul
 [x] add last wall mechanic (borders of kingdom)
-[]  add coin pickup animation
-[]  add castle with upgrades
-[]  add scythe market
 []  add coin pouch
 []  add towers mechanic
-[]  add water
 []  add animation and stuff for borders
-[]  add pathces of grass
+[]  add patches of grass
 []  add archer wander mechanic
 [--]add meadow mechanic
 []  add water with reflection
@@ -56,6 +53,7 @@ Art:
 []  add town center tiers
     add animations for (builder[-], archer[x], beggar[x], farmer[], bunny[x], peasent[x])
 [x] add working animation for builder
+[]  add coin pickup animation
 --------------------------------------------------------------------------------
 UI:
 []  add pause screen
