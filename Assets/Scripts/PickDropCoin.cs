@@ -35,7 +35,8 @@ public class PickDropCoins : MonoBehaviour
         {
             numberOfCoins += 1;
         }
-        if (collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
+        if (collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket")
+            || collider2D.CompareTag("OpenScytheMarket") || collider2D.CompareTag("ScytheMarket"))
         {
             isCollidingWithMarket = true;
         }
@@ -53,7 +54,8 @@ public class PickDropCoins : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider2D)
     {
-        if(collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
+        if(collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket")
+            || collider2D.CompareTag("OpenScytheMarket") || collider2D.CompareTag("ScytheMarket"))
         {
             isCollidingWithMarket = false;
         }
