@@ -19,7 +19,6 @@ TagManager:
   - HammerMarket
   - MarkedTree
   - MarkableTrees
-  - TownCenter1
   - Bunnies
   - Arrow
   - Enemies
@@ -40,6 +39,8 @@ TagManager:
   - DeadTroll
   - ScytheMarket
   - OpenScytheMarket
+  - UpgradableTC
+  - TC
   layers:
   - Default
   - TransparentFX

@@ -69,34 +69,29 @@ public class DayAndNightCycleBehaviour : MonoBehaviour
             canChangeToNextDay = true;
             OnChangeToNextDay?.Invoke(this, new ChangeToNextDayArgs{ actualDay = days });
         }
-
         else if (canChangeToSunrise && time >= 20f)
         {
             canChangeToSunrise = false;
             OnChangeToSunRise?.Invoke(this, EventArgs.Empty);
             Debug.Log("Actual time: " + time);
         }
-
         else if (canChangeToSunset && time >= 90f)
         {
             OnChangeToSunSet?.Invoke(this, EventArgs.Empty);
             canChangeToSunset = false;
             Debug.Log("Actual time: " + time);
         }
-
         else if (canChangeToMoonrise && time >= 165f)
         {
             OnChangeToMoonrise?.Invoke(this, EventArgs.Empty);
             canChangeToMoonrise = false;
             Debug.Log("Actual time: " + time);
         }
-
         else if (canChangeToMoonSet && time >= 205f)
         {
             canChangeToMoonSet = false;
             Debug.Log("Actual time: " + time);
         }
-
         else if (canChangeToNextDay && time >= 240f)
         {
             canChangeToNextDay = false;

@@ -1264,6 +1264,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bowMarket: {fileID: 1967439265}
   globalLight: {fileID: 1678534562}
+--- !u!1 &1792617554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4847530864446453361, guid: 597edfdb607035c4da2860dc1b414665, type: 3}
+  m_PrefabInstance: {fileID: 4591740057938481723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1792617558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792617554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91429b1a53e24e543afcda47d5acb1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualLvlOfCenter: 0
 --- !u!1 &1967439265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2225172776359989108, guid: cc3fd623355119147b82df4c767cdcf1, type: 3}
@@ -2531,10 +2549,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownCenter
       objectReference: {fileID: 0}
+    - target: {fileID: 4847530864446453361, guid: 597edfdb607035c4da2860dc1b414665, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4847530864446453361, guid: 597edfdb607035c4da2860dc1b414665, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1792617558}
   m_SourcePrefab: {fileID: 100100000, guid: 597edfdb607035c4da2860dc1b414665, type: 3}
 --- !u!1001 &4639165643485863317
 PrefabInstance:
@@ -3529,11 +3554,11 @@ SceneRoots:
   - {fileID: 571402059}
   - {fileID: 7093382660254976533}
   - {fileID: 4591740057938481723}
-  - {fileID: 1329456462}
-  - {fileID: 2955356811828730258}
+  - {fileID: 793050833}
   - {fileID: 8804969947764969643}
   - {fileID: 6773064655568448027}
   - {fileID: 441140447445144333}
+  - {fileID: 1888972405798207852}
   - {fileID: 5353784342222844423}
   - {fileID: 886288530}
   - {fileID: 3592650454735242976}
@@ -3541,5 +3566,5 @@ SceneRoots:
   - {fileID: 1315376150}
   - {fileID: 1463848251}
   - {fileID: 1590327142}
-  - {fileID: 793050833}
-  - {fileID: 1888972405798207852}
+  - {fileID: 2955356811828730258}
+  - {fileID: 1329456462}
