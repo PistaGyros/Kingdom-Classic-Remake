@@ -69,3 +69,5 @@ Things to add in Beta:
 ---------------------------------------------------------------------------------
 Interesting mechanic ideas:
 ARCHER WITH ONE STAR: when ther are more than for example 100 archers on one site, two archers become one with one star, this one star archer can for example shoot two arrows at once or smth like that...
+THUNDER: something like blood moon but little bit different
+CLOAK FOR RAIN + ANIM OF DROPPING RAIN DROPS: take the cloak as another layer for player character as well as for buildings and npcs 
