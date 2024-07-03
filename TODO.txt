@@ -17,7 +17,7 @@ Funcional stuff:
 [x] add peasents
 [x] add beggar coin pickup mechanic
 [x] add beggar go for coin
-    add other npcs (peasent [x], archer[x], farmer[] and builders[x])
+    add other npcs (peasent [x], archer[x], farmer[-] and builders[x])
 [x] add arrow shoot by archer mechanic
 [x] add hammer market
 [x] add bow market
