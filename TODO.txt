@@ -75,3 +75,4 @@ Interesting mechanic ideas:
 ARCHER WITH ONE STAR: when ther are more than for example 100 archers on one site, two archers become one with one star, this one star archer can for example shoot two arrows at once or smth like that...
 THUNDER: something like blood moon but little bit different
 CLOAK FOR RAIN + ANIM OF DROPPING RAIN DROPS: take the cloak as another layer for player character as well as for buildings and npcs
+NOT TORCH FOR PLAYER BUT A LANTERN: instead of torch player would have the lantern in dark areas such as forest, when player is static the monarch would have the lantern in hand, but when moving it they would have "store" it on horse's thight.
