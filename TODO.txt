@@ -4,6 +4,10 @@ Actually working on:
 General stuff:
 [x] add several version branchess into project
 --------------------------------------------------------------------------------
+Things not forget to finish:
+[]  change delay time for upgrade of town center to 120
+[]  add torches for town center
+--------------------------------------------------------------------------------
 Funcional stuff:
 []  add queen
 [x] add movement to player with animations
@@ -31,7 +35,6 @@ Funcional stuff:
 []  add coin pouch
 []  add towers mechanic
 []  add animation and stuff for borders
-[]  add patches of grass
 []  add archer wander mechanic
 [--]add meadow mechanic
 []  add water with reflection
@@ -39,7 +42,7 @@ Funcional stuff:
 []  add farms mechanic
 --------------------------------------------------------------------------------
 Enviroment:
-[]  add coin idle animation
+[x] add coin idle animation
 []  add coin pickup&drop animation
 []  add background enviroment
 []  add scaffold animation sprites
@@ -50,7 +53,7 @@ Art:
 [x] draw sprites of beggar's camps
 [x] add forest tiles
 []  add boulders (foundation for towers)
-[]  add town center tiers
+[x] add town center tiers
     add animations for (builder[-], archer[x], beggar[x], farmer[], bunny[x], peasent[x])
 [x] add working animation for builder
 []  add coin pickup animation
@@ -58,6 +61,7 @@ Art:
 UI:
 []  add pause screen
 []  add start screen menu
+[]  add floating coins when paying
 ---------------------------------------------------------------------------------
 Rework & overhaul:
 [x] rework pay system with calls for NPCs
@@ -70,4 +74,4 @@ Things to add in Beta:
 Interesting mechanic ideas:
 ARCHER WITH ONE STAR: when ther are more than for example 100 archers on one site, two archers become one with one star, this one star archer can for example shoot two arrows at once or smth like that...
 THUNDER: something like blood moon but little bit different
-CLOAK FOR RAIN + ANIM OF DROPPING RAIN DROPS: take the cloak as another layer for player character as well as for buildings and npcs 
+CLOAK FOR RAIN + ANIM OF DROPPING RAIN DROPS: take the cloak as another layer for player character as well as for buildings and npcs
