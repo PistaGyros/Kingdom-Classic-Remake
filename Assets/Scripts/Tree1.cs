@@ -42,7 +42,6 @@ public class Tree1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
         playerPayButtonIsPressed = player.GetComponent<PickDropCoins>().payButtonIsPressed;
 
         if (playerHasCollidedWithTree && playerPayButtonIsPressed && !payingHasBeggun)
@@ -55,7 +54,6 @@ public class Tree1 : MonoBehaviour
             CancelInvoke("PayToTree");
             payingHasBeggun = false;
         }
-
         if (cutDownTime > 0 && treeIsUnderConstruction)
             cutDownTime -= Time.fixedDeltaTime;
         else if (cutDownTime < 0 && treeIsUnderConstruction)
@@ -120,6 +118,7 @@ public class Tree1 : MonoBehaviour
 
     private void PayToTree()
     {
+        playerCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
         if (playerCoins >= requiredCoinsForMark && !treeIsMarked)
         {
             player.GetComponent<PickDropCoins>().numberOfCoins--;

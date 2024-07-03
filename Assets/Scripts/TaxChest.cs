@@ -11,8 +11,8 @@ public class TaxChest : MonoBehaviour
     [SerializeField] private GameObject coin;
     private GameObject globalLight; 
 
-    private int[] amountOfTaxCoins = new int[7] {0, 5, 6, 6, 7, 4, 1};
-    private int townCenterLvl;
+    static int[] amountOfTaxCoins = new int[7] {0, 5, 6, 6, 7, 4, 1};
+    private int townCenterLvl = 0;
     private int amountOfSpawnedCoins;
     private bool chestIsReadyAgain;
     
@@ -23,10 +23,17 @@ public class TaxChest : MonoBehaviour
         chestSpriteRenderer = GetComponent<SpriteRenderer>();
         chestSpriteRenderer.enabled = false;
         townCenter = GameObject.Find("TownCenter");
+        TownCenter tc = townCenter.GetComponent<TownCenter>();
+        tc.OnTownCenterUpgrade += TcOnOnTownCenterUpgrade;
         globalLight = GameObject.Find("GlobalLight2D");
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToNextDay += DayAndNightCycleBehaviourOnOnChangeToNextDay;
         amountOfSpawnedCoins = 0;
+    }
+
+    private void TcOnOnTownCenterUpgrade(object sender, TownCenter.TownCenterArgs e)
+    {
+        townCenterLvl = e.actualLvlOfCenter;
     }
 
     private void DayAndNightCycleBehaviourOnOnChangeToNextDay(object sender, DayAndNightCycleBehaviour.ChangeToNextDayArgs e)
@@ -80,8 +87,5 @@ public class TaxChest : MonoBehaviour
         chestCollider.enabled = true;
         chestSpriteRenderer.enabled = true;
         chestIsReadyAgain = true;
-        // townCenterLvl = townCenter.GetComponent<TownCenter>().actualLvl;
-        // temporary solution
-        townCenterLvl = 1;
     }
 }

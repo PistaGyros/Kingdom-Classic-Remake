@@ -8,6 +8,9 @@ public class ScytheMarket : MonoBehaviour
     private SpriteRenderer spriteDrawer;
 
     [SerializeField] GameObject playerCharacter;
+    [SerializeField] private GameObject townCenter;
+    private BoxCollider2D marketCollider;
+    
     [SerializeField] Sprite scytheMarketZero;
     [SerializeField] Sprite scytheMarketOne;
     [SerializeField] Sprite scytheMarketTwo;
@@ -33,6 +36,20 @@ public class ScytheMarket : MonoBehaviour
     {
         playerCharacter = GameObject.Find("Player");
         spriteDrawer = GetComponent<SpriteRenderer>();
+        spriteDrawer.enabled = false;
+        marketCollider = GetComponent<BoxCollider2D>();
+        marketCollider.enabled = false;
+        TownCenter tc = townCenter.GetComponent<TownCenter>();
+        tc.OnTownCenterUpgrade += TcOnOnTownCenterUpgrade;
+    }
+
+    private void TcOnOnTownCenterUpgrade(object sender, TownCenter.TownCenterArgs e)
+    {
+        if (e.actualLvlOfCenter >= 3)
+        {
+            spriteDrawer.enabled = true;
+            marketCollider.enabled = true;
+        }
     }
 
     // Update is called once per frame
