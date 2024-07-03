@@ -22,12 +22,15 @@ public class TownCenter : MonoBehaviour
 
     private int requiredCoinsNextUp;
     private int[] requiredCoinsForUp = new int[7] { 0, 1, 3, 6, 7, 8, 9 };
-    private Vector2[] posOfBg = new Vector2[4]
+    private Vector2[] posOfBg = new Vector2[7]
     {
         new Vector2(),
         new Vector2(),
         new Vector2(0.62f, 0.72f),
-        new Vector2(0.62f, 0.72f)
+        new Vector2(0.62f, 0.72f),
+        new Vector2(0, 2f),
+        new Vector2(0, 2f),
+        new Vector2(0, 2.35f)
     };
 
     private bool playerHasCollided;

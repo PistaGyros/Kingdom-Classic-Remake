@@ -10,6 +10,7 @@ public class Wall : MonoBehaviour
     private GameObject playerCharacter;
     private List<GameObject> assignedBuilders = new List<GameObject>();
     private BoxCollider2D boxCollider2D;
+    private GameObject townCenter;
 
     [SerializeField] private Sprite baseForWall;
     [SerializeField] private Sprite wallLvlOne;
@@ -77,6 +78,18 @@ public class Wall : MonoBehaviour
         scaffoldSpriteRenderer.enabled = false;
         if (transform.position.x > 0) transform.localScale = new Vector2(-1, 1);
         AmountOfRequiredCoinsForUpgrade();
+        townCenter = GameObject.Find("TownCenter");
+        TownCenter tc = townCenter.GetComponent<TownCenter>();
+        tc.OnTownCenterUpgrade += TcOnOnTownCenterUpgrade;
+    }
+
+    private void TcOnOnTownCenterUpgrade(object sender, TownCenter.TownCenterArgs e)
+    {
+        if (e.actualLvlOfCenter == 3 && actualLvlOfWall <= 0)
+        {
+            actualLvlOfWall = 1;
+            ChangerToAnotherLvl();
+        }
     }
 
     private void FixedUpdate()

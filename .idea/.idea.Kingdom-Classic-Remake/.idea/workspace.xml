@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScytheMarket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScytheMarket.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TownCenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TownCenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <workItem from="1714051492820" duration="9681000" />
       <workItem from="1718723189010" duration="4260000" />
       <workItem from="1719919153003" duration="1242000" />
-      <workItem from="1719923368702" duration="17892000" />
+      <workItem from="1719923368702" duration="20418000" />
     </task>
     <servers />
   </component>
