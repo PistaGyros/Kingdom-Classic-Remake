@@ -33,7 +33,7 @@ Funcional stuff:
 [x] add archer update overhaul
 [x] add last wall mechanic (borders of kingdom)
 []  add coin pouch
-[]  add towers mechanic
+[-] add towers mechanic
 []  add animation and stuff for borders
 []  add archer wander mechanic
 [--]add meadow mechanic
@@ -52,7 +52,7 @@ Art:
 [x] add meadow tiles
 [x] draw sprites of beggar's camps
 [x] add forest tiles
-[]  add boulders (foundation for towers)
+[x] add boulders (foundation for towers)
 [x] add town center tiers
     add animations for (builder[-], archer[x], beggar[x], farmer[], bunny[x], peasent[x])
 [x] add working animation for builder
