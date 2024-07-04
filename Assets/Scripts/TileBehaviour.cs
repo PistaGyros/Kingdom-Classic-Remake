@@ -67,9 +67,9 @@ public class TileBehaviour : MonoBehaviour
             isMeadow = false;
             spriteRenderer.sprite = spritesList[0];
         }
-        else if (collider2D.CompareTag("TownCenter1") || collider2D.CompareTag("BowMarket") ||
-                 collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || 
-                 collider2D.CompareTag("OpenHammerMarket"))
+        else if (collider2D.CompareTag("TC") || collider2D.CompareTag("UpgradableTC") ||
+                 collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || 
+                 collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
         {
              // tile is in the city, grass can spawn
              isMeadow = false;

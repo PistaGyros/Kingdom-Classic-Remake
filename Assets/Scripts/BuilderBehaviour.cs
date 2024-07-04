@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class BuilderBehaviour : MonoBehaviour
     private GameObject[] markedWalls;
     private GameObject[] wallsUnderAttack;
     private GameObject[] emptyWalls;
+    private GameObject[] archerTowers;
+    private GameObject[] towersUnderConstruct;
+    
     Rigidbody2D rigidbody2D;
     private float direction;
     int numberOfCoinsOfBuilder;
@@ -79,6 +83,47 @@ public class BuilderBehaviour : MonoBehaviour
             walls.OnCallBuilderToWall += Walls_OnCallBuilderToWall;
             walls.OnStopCallBuilderToWall += Walls_OnStopCallBuilderToWall;
         }
+        archerTowers ??= GameObject.FindGameObjectsWithTag("UpgradableTower");
+        if (archerTowers != null)
+        {
+            foreach (GameObject tower in archerTowers)
+            {
+                ArcherTower archerTower = tower.GetComponentInParent<ArcherTower>();
+                archerTower.OnCallBuildersToTower += ArcherTowerOnOnCallBuildersToTower;
+                archerTower.OnStopCallBuildersToTower += ArcherTowerOnOnStopCallBuildersToTower;
+            }   
+        }
+        towersUnderConstruct ??= GameObject.FindGameObjectsWithTag("Tower");
+        if (towersUnderConstruct != null)
+        {
+            foreach (GameObject tower in towersUnderConstruct)
+            {
+                ArcherTower archerTower = tower.GetComponentInParent<ArcherTower>();
+                archerTower.OnCallBuildersToTower += ArcherTowerOnOnCallBuildersToTower;
+                archerTower.OnStopCallBuildersToTower += ArcherTowerOnOnStopCallBuildersToTower;
+            }   
+        }
+    }
+
+    private void ArcherTowerOnOnStopCallBuildersToTower(object sender, EventArgs e)
+    {
+        direction = 0;
+        isBussy = false;
+    }
+
+    private void ArcherTowerOnOnCallBuildersToTower(object sender, ArcherTower.ArcherTowerArgs e)
+    {
+        if (!isBussy)
+        {
+            currentPos = transform.position;
+            targetPos = new Vector2(e.actualPos.x, transform.position.y);
+            if (currentPos.x < targetPos.x)
+                direction = 1;
+            else
+                direction = -1;
+            transform.localScale = new Vector2(direction, 1);
+            isBussy = true;
+        }
     }
 
 
@@ -126,12 +171,11 @@ public class BuilderBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || collider2D.CompareTag("WallUnderAttack"))
+        if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("Tower"))
         {
             // is building (working)
-            isBussy = true;
-            direction = 0;
-            builderAnimator.SetBool("IsBuilding", true);
+            StartWorking();
         }
         else if (collider2D.CompareTag("Coins") || collider2D.CompareTag("PlayerCoins"))
         {
@@ -142,12 +186,11 @@ public class BuilderBehaviour : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall"))
+        if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") ||
+            (collider2D.CompareTag("Tower")))
         {
             // stopped building (working)
-            isBussy = false;
-            Debug.Log(isBussy);
-            builderAnimator.SetBool("IsBuilding", false);
+            StopBuilding();
         }
     }
 
@@ -166,5 +209,12 @@ public class BuilderBehaviour : MonoBehaviour
         isBussy = false;
         Debug.Log("isBussy = " + isBussy);
         builderAnimator.SetBool("IsBuilding", false);
+    }
+
+    public void StartWorking()
+    {
+        isBussy = true;
+        direction = 0;
+        builderAnimator.SetBool("IsBuilding", true);
     }
 }

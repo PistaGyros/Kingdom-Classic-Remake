@@ -16,6 +16,7 @@ public class PickDropCoins : MonoBehaviour
     bool isCollidingWithTree;
     bool isCollidingWithUpgradableWall;
     private bool isCollidingWwithTownCenter;
+    private bool isCollidingWithTower;
 
 
     void Start()
@@ -45,6 +46,10 @@ public class PickDropCoins : MonoBehaviour
             isCollidingWwithTownCenter = true;
         else if (collider2D.CompareTag("TC"))
             isCollidingWwithTownCenter = false;
+        else if (collider2D.CompareTag("UpgradableTower"))
+            isCollidingWithTower = true;
+        else if (collider2D.CompareTag("Tower"))
+            isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees"))
         {
             isCollidingWithTree = true;
@@ -68,6 +73,10 @@ public class PickDropCoins : MonoBehaviour
             isCollidingWwithTownCenter = false;
         else if (collider2D.CompareTag("TC"))
             isCollidingWwithTownCenter = false;
+        else if (collider2D.CompareTag("UpgradableTower"))
+            isCollidingWithTower = false;
+        else if (collider2D.CompareTag("Tower"))
+            isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree"))
         {
             isCollidingWithTree = false;
@@ -83,7 +92,7 @@ public class PickDropCoins : MonoBehaviour
     void OnDropCoin(InputValue value)
     {
         if (numberOfCoins > 0 && !isCollidingWithMarket && !isCollidingWithTree && !isCollidingWithUpgradableWall && 
-            !isCollidingWwithTownCenter)
+            !isCollidingWwithTownCenter && !isCollidingWithTower)
         {
             numberOfCoins -= 1;
             SpawnCoin();

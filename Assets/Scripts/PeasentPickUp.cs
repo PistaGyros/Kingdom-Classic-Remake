@@ -108,7 +108,7 @@ public class PeasentPickUp : MonoBehaviour
         {
             numberOfCoinsOfPeasent += 1;
         }
-        else if (collider2D.CompareTag("TownCenter1"))
+        else if (collider2D.CompareTag("TC") || collider2D.CompareTag("UpgradableTC"))
         {
             direction = 0;
             animatorPeasent.SetBool("IsMoving", false);
@@ -134,6 +134,7 @@ public class PeasentPickUp : MonoBehaviour
     {
         if (hammerMarket != null)
             direction = transform.position.x > hammerMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
         animatorPeasent.SetBool("IsMoving", true);
         transform.localScale = new Vector2(direction, 1);
     }
@@ -142,6 +143,7 @@ public class PeasentPickUp : MonoBehaviour
     {
         if (bowMarket != null)
             direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
         animatorPeasent.SetBool("IsMoving", true);
         transform.localScale = new Vector2(direction, 1);
     }
@@ -150,6 +152,7 @@ public class PeasentPickUp : MonoBehaviour
     {
         if (scytheMarket != null)
             direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
         animatorPeasent.SetBool("IsMoving", true);
         transform.localScale = new Vector2(direction, 1);
     }

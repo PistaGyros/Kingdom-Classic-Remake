@@ -41,6 +41,8 @@ TagManager:
   - OpenScytheMarket
   - UpgradableTC
   - TC
+  - Tower
+  - UpgradableTower
   layers:
   - Default
   - TransparentFX
