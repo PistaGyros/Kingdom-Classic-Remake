@@ -11,18 +11,22 @@ public class ArcherBehaviour : MonoBehaviour
     private GameObject homeBorder;
     private Rigidbody2D archerRigidbody2D;
     private Animator archerAnimator;
+    private SpriteRenderer archerSpriteRenderer;
     private int archerSpeed = 5;
     private int archerDirection;
     private string isWalking = "IsWalking";
 
     private bool borderDoesExist;
     private bool isAtHisStation;
+
+    private bool archerIsOnTower;
     
 
     void Start()
     {
         archerRigidbody2D = gameObject.GetComponentInParent<Rigidbody2D>();
         archerAnimator = gameObject.GetComponentInParent<Animator>();
+        archerSpriteRenderer = gameObject.GetComponentInParent<SpriteRenderer>();
         canPickUp = true;
         // init of events
         //GeneralHandler generalHandler = globalLight.GetComponent<GeneralHandler>(); ... remove if no more reliable
@@ -72,6 +76,10 @@ public class ArcherBehaviour : MonoBehaviour
             isAtHisStation = true;
             archerDirection = 0;
             archerAnimator.SetBool("IsWalking", false);
+        }
+        else if (collider2D.CompareTag("UpgradableTower"))
+        {
+            archerIsOnTower = true;
         }
     }
 

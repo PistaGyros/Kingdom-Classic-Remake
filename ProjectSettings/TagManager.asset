@@ -43,6 +43,9 @@ TagManager:
   - TC
   - Tower
   - UpgradableTower
+  - TowerUnderConstruct
+  - ArcherCollider
+  - Farm
   layers:
   - Default
   - TransparentFX

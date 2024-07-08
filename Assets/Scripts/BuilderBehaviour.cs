@@ -93,7 +93,7 @@ public class BuilderBehaviour : MonoBehaviour
                 archerTower.OnStopCallBuildersToTower += ArcherTowerOnOnStopCallBuildersToTower;
             }   
         }
-        towersUnderConstruct ??= GameObject.FindGameObjectsWithTag("Tower");
+        towersUnderConstruct ??= GameObject.FindGameObjectsWithTag("TowerUnderConstruct");
         if (towersUnderConstruct != null)
         {
             foreach (GameObject tower in towersUnderConstruct)
@@ -172,7 +172,7 @@ public class BuilderBehaviour : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
-            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("Tower"))
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct"))
         {
             // is building (working)
             StartWorking();
@@ -187,7 +187,7 @@ public class BuilderBehaviour : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") ||
-            (collider2D.CompareTag("Tower")))
+            (collider2D.CompareTag("TowerUnderConstruct")))
         {
             // stopped building (working)
             StopBuilding();

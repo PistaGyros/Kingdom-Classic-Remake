@@ -32,10 +32,13 @@ public class ArcherTower : MonoBehaviour
         new Vector2(0, 0)
     };
 
+    private Vector2[,] posOfArchers;
+
     private int actualLvlOfTower;
     private int[] costOfNextUp = new int[5] { 0, 3, 5, 7, 9};
-    public int numberOfArchers;
+    public int numberOfArchers = 0;
     private int[] numberOfAllowedArchers = new int[5] { 0, 1, 1, 2, 3 };
+    public int numeroOfAllowedArchers;
     public bool playerHasCollided;
     private bool towerCanBeUpgraded;
     private bool playerPayButtonIsPressed;
@@ -44,7 +47,7 @@ public class ArcherTower : MonoBehaviour
     private float buildTimeLeft;
     private bool towerIsUnderConstruction;
     private static string upgradableTowerTag = "UpgradableTower";
-    private static string towerUnderConstructTag = "Tower";
+    private static string towerUnderConstructTag = "TowerUnderConstruct";
 
     public List<GameObject> activeWorkers;
 
@@ -62,7 +65,7 @@ public class ArcherTower : MonoBehaviour
         player = GameObject.Find("Player");
         towerSpriteRenderer = tower.GetComponent<SpriteRenderer>();
         towerCanBeUpgraded = true;
-        switch (transform.position.x)
+        switch (startingPos.x)
         {
             case < 0:
                 transform.localScale = new Vector2(-1, 1);
@@ -141,6 +144,7 @@ public class ArcherTower : MonoBehaviour
     {
         Debug.Log("Tower has been constructed");
         actualLvlOfTower++;
+        numeroOfAllowedArchers = numberOfAllowedArchers[actualLvlOfTower];
         towerSpriteRenderer.sprite = towersSprites[actualLvlOfTower];
         tower.transform.position = new Vector2(transform.position.x, posOfTower[actualLvlOfTower].y);
         Invoke("Delay", 2f);
@@ -202,5 +206,35 @@ public class ArcherTower : MonoBehaviour
             Debug.Log(worker);
             worker.GetComponent<BuilderBehaviour>().StartWorking();
         }
+    }
+
+    public Vector2 SetPositionsForArchersStandPoints()
+    {
+        posOfArchers = new Vector2[3,5]
+        {
+            {new Vector2(0, 0), 
+                new Vector2(startingPos.x - 0.7f, 1.25f), 
+                new Vector2(startingPos.x - 0.2f, 2.12f), 
+                new Vector2(startingPos.x - 0.5f, 2.44f), 
+                new Vector2(startingPos.x - 0.5f, 2.44f)
+            },
+            {new Vector2(0, 0), 
+                new Vector2(0, 0), 
+                new Vector2(0, 0), 
+                new Vector2(startingPos.x + 0.25f, 2.44f), 
+                new Vector2(startingPos.x + 0.25f, 2.44f)
+            },
+            {new Vector2(0, 0), 
+                new Vector2(0, 0), 
+                new Vector2(0, 0), 
+                new Vector2(0, 0), 
+                new Vector2(startingPos.x -0.1f, 3.9f)
+            }
+        };
+        numberOfArchers++;
+        Debug.Log(numberOfArchers + " " + actualLvlOfTower);
+        Debug.Log(posOfArchers[(numeroOfAllowedArchers - numberOfArchers), actualLvlOfTower]);
+        Vector2 positionForArcher;
+        return positionForArcher = posOfArchers[numeroOfAllowedArchers - numberOfArchers, actualLvlOfTower];
     }
 }

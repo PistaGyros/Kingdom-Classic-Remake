@@ -13,6 +13,10 @@ public class Tree1 : MonoBehaviour
     [SerializeField] GameObject coin;
     private GameObject player;
 
+    [SerializeField] private GameObject outliner;
+    // 
+    private SpriteRenderer outlineRenderer;
+
     private float cutDownTime = 0f;
     private float progresCutDownTime = 0f;
     private bool treeIsUnderConstruction = false;
@@ -38,6 +42,7 @@ public class Tree1 : MonoBehaviour
     {
         player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        outlineRenderer = outliner.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -72,8 +77,8 @@ public class Tree1 : MonoBehaviour
         {
             if (!treeIsMarked)
             {
-                spriteRenderer.sprite = treeWOutline;
                 playerHasCollidedWithTree = true;
+                outlineRenderer.enabled = true;
             }            
         }
 
@@ -96,6 +101,7 @@ public class Tree1 : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithTree = false;
+            outlineRenderer.enabled = false;
         }
 
         if (collider2D.CompareTag("Builder"))

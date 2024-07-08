@@ -6,10 +6,7 @@ using UnityEngine;
 public class TileBehaviour : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private Sprite muddyTile;
-    [SerializeField] private Sprite meadowTile;
-    [SerializeField] private Sprite forestTile;
-    private List<Sprite> spritesList = new List<Sprite>();
+    [SerializeField] private List<Sprite> spritesList;
     [SerializeField] private GameObject bunny;
     private GameObject globalLight;
 
@@ -17,21 +14,19 @@ public class TileBehaviour : MonoBehaviour
     private bool bunCanSpawn;
     private float bunSpawnTimer;
 
-    private int actualNumTrees;
+    private int actualNumBuildings;
     private bool isMeadow;
 
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spritesList.Add(muddyTile);
-        spritesList.Add(meadowTile);
-        spritesList.Add(forestTile);
         globalLight = GameObject.Find("GlobalLight2D");
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToSunRise += DayAndNightCycleBehaviourOnOnChangeToSunRise;
         dayAndNightCycleBehaviour.OnChangeToSunSet += DayAndNightCycleBehaviourOnOnChangeToSunSet;
         isMeadow = true;
+        ChangeToMeadow();
     }
 
     private void DayAndNightCycleBehaviourOnOnChangeToSunSet(object sender, EventArgs e)
@@ -53,27 +48,20 @@ public class TileBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree"))
+        if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree") ||
+            collider2D.CompareTag("BeggarsCamp"))
         {
-            // tile is forest
-            isMeadow = false;
-            actualNumTrees++;
-            spriteRenderer.sprite = spritesList[2];
+            actualNumBuildings++;
+            ChangeToForest();
         }
-        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("MarkedWall") || 
-                 collider2D.CompareTag("WallUnderAttack"))
+        else if (collider2D.CompareTag("Wall") || collider2D.CompareTag("MarkedWall") ||
+                 collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TC") ||
+                 collider2D.CompareTag("UpgradableTC") || collider2D.CompareTag("BowMarket") ||
+                 collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") ||
+                 collider2D.CompareTag("OpenHammerMarket"))
         {
-            // tile is in the city, with no grass
-            isMeadow = false;
-            spriteRenderer.sprite = spritesList[0];
-        }
-        else if (collider2D.CompareTag("TC") || collider2D.CompareTag("UpgradableTC") ||
-                 collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || 
-                 collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
-        {
-             // tile is in the city, grass can spawn
-             isMeadow = false;
-             spriteRenderer.sprite = spritesList[0];
+            actualNumBuildings++;
+            ChangeToMuddy();
         }
         else if (collider2D.CompareTag("Bunnies"))
         {
@@ -87,14 +75,13 @@ public class TileBehaviour : MonoBehaviour
     {
         if (collider2D.CompareTag("Bunnies"))
             actualNumBun--;
-        else if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree"))
+        else if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree") ||
+                 collider2D.CompareTag("BeggarsCamp"))
         {
-            actualNumTrees--;
-            if (actualNumTrees <= 0)
+            actualNumBuildings--;
+            if (actualNumBuildings <= 0)
             {
-                // tile is meadow
-                isMeadow = true;
-                spriteRenderer.sprite = spritesList[1];
+                ChangeToMeadow();
             }
         }
     }
@@ -107,5 +94,24 @@ public class TileBehaviour : MonoBehaviour
             // Instantiate(bunny, new Vector2(transform.position.x, 0.15f), Quaternion.identity);
             bunSpawnTimer = 60f;
         }
+    }
+
+    private void ChangeToForest()
+    {
+        // tile is forest
+        isMeadow = false;
+        spriteRenderer.sprite = spritesList[1];
+    }
+
+    private void ChangeToMeadow()
+    {
+        isMeadow = true;
+        spriteRenderer.sprite = spritesList[2];
+    }
+
+    private void ChangeToMuddy()
+    {
+        isMeadow = false;
+        spriteRenderer.sprite = spritesList[0];
     }
 }

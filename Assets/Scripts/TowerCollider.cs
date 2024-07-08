@@ -16,6 +16,17 @@ public class TowerCollider : MonoBehaviour
             archerTower.GetComponent<ArcherTower>().activeWorkers.Add(collider2D.gameObject);
             archerTower.GetComponent<ArcherTower>().BuilderHasCollided();
         }
+        else if (collider2D.CompareTag("ArcherCollider"))
+        {
+            if (archerTower.GetComponent<ArcherTower>().numberOfArchers <
+                archerTower.GetComponent<ArcherTower>().numeroOfAllowedArchers)
+            {
+                collider2D.transform.parent.position = 
+                    archerTower.GetComponent<ArcherTower>().SetPositionsForArchersStandPoints();
+                int sortingOrder = archerTower.GetComponent<ArcherTower>().numberOfArchers == 3 ? -4 : -2;
+                collider2D.GetComponentInParent<SpriteRenderer>().sortingOrder = sortingOrder;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider2D)

@@ -48,7 +48,7 @@ public class PickDropCoins : MonoBehaviour
             isCollidingWwithTownCenter = false;
         else if (collider2D.CompareTag("UpgradableTower"))
             isCollidingWithTower = true;
-        else if (collider2D.CompareTag("Tower"))
+        else if (collider2D.CompareTag("TowerUnderConstruct"))
             isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees"))
         {
@@ -75,7 +75,7 @@ public class PickDropCoins : MonoBehaviour
             isCollidingWwithTownCenter = false;
         else if (collider2D.CompareTag("UpgradableTower"))
             isCollidingWithTower = false;
-        else if (collider2D.CompareTag("Tower"))
+        else if (collider2D.CompareTag("TowerUnderConstruct"))
             isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree"))
         {

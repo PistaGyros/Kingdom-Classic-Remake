@@ -10,6 +10,9 @@ public class ScytheMarket : MonoBehaviour
     [SerializeField] GameObject playerCharacter;
     [SerializeField] private GameObject townCenter;
     private BoxCollider2D marketCollider;
+
+    [SerializeField] private GameObject outliner;
+    private SpriteRenderer outlineRenderer;
     
     [SerializeField] Sprite scytheMarketZero;
     [SerializeField] Sprite scytheMarketOne;
@@ -41,6 +44,7 @@ public class ScytheMarket : MonoBehaviour
         marketCollider.enabled = false;
         TownCenter tc = townCenter.GetComponent<TownCenter>();
         tc.OnTownCenterUpgrade += TcOnOnTownCenterUpgrade;
+        outlineRenderer = outliner.GetComponent<SpriteRenderer>();
     }
 
     private void TcOnOnTownCenterUpgrade(object sender, TownCenter.TownCenterArgs e)
@@ -81,6 +85,7 @@ public class ScytheMarket : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithMarket = true;
+            outlineRenderer.enabled = true;
         }
         if (collider2D.CompareTag("Peasents"))
         {
@@ -100,6 +105,7 @@ public class ScytheMarket : MonoBehaviour
             playerHasCollidedWithMarket = false;
             amountOfPaidCoins = 0;
             CancelInvoke("PayToMarket");
+            outlineRenderer.enabled = false;
         }
     }
 

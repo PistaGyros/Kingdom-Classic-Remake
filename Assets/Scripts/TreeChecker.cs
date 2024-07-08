@@ -9,7 +9,7 @@ public class TreeChecker : MonoBehaviour
     {
         if (collider2D.CompareTag("MarkedTree"))
         {
-            Destroy(transform.parent.gameObject, 1f);
+            GetComponentInParent<BeggarsCamps>().DestroyCamp();
             Debug.Log("Beggars camp has been destroyed");
         }
     }

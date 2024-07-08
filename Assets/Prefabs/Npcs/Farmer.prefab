@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -8202505227861558447}
   - component: {fileID: -4162746056216408727}
   - component: {fileID: 3223757919341510897}
+  - component: {fileID: 7658075176586232443}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Farmer
@@ -180,3 +181,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7658075176586232443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238059052126817855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabfc5f66a7a9aa4287ca916d5582fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmLandPrefab: {fileID: 1201888428113224583, guid: 36e97b62066037a4884ee7b68f5dbb07, type: 3}
+  hasAssignedField: 0
