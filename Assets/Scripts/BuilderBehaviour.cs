@@ -181,13 +181,29 @@ public class BuilderBehaviour : MonoBehaviour
         {
             numberOfCoinsOfBuilder += 1;
         }
+        else if (collider2D.CompareTag("Wall"))
+        {
+            StopBuilding();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider2D)
+    {
+        if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct"))
+        {
+            // is building (working)
+            StartWorking();
+        }
+        else if (collider2D.CompareTag("Wall"))
+            StopBuilding();
     }
 
 
     void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") ||
-            (collider2D.CompareTag("TowerUnderConstruct")))
+            (collider2D.CompareTag("TowerUnderConstruct")) || collider2D.CompareTag("Wall"))
         {
             // stopped building (working)
             StopBuilding();

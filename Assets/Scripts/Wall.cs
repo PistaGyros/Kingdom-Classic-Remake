@@ -6,37 +6,29 @@ using System.Runtime.CompilerServices;
 
 public class Wall : MonoBehaviour
 {
-    [SerializeField] private GameObject scaffold;
     private GameObject playerCharacter;
     private List<GameObject> assignedBuilders = new List<GameObject>();
     private BoxCollider2D boxCollider2D;
     private GameObject townCenter;
 
-    [SerializeField] private Sprite baseForWall;
-    [SerializeField] private Sprite wallLvlOne;
-    [SerializeField] private Sprite wallLvlOneBroke;
-    [SerializeField] private Sprite wallLvlTwo;
-    [SerializeField] private Sprite wallLvlTwoBroke;
-    [SerializeField] private Sprite wallLvlThree;
-    [SerializeField] private Sprite wallLvlThreeBroke;
-    [SerializeField] private Sprite wallLvlFour;
-    [SerializeField] private Sprite wallLvlFourBroke;
+    [SerializeField] private List<Sprite> wallsSprites;
+    [SerializeField] private List<Sprite> scaffoldWallSprites;
+    [SerializeField] private List<Sprite> wallsBrokenSprites;
 
     private SpriteRenderer spriteRenderer;
-    private SpriteRenderer scaffoldSpriteRenderer;
-
-    private Vector2 scaffoldPosition;
+    
     private Vector2 startingPos;
+    private float scaffoldsPos = 1.115f;
+
+    private float[] posesWalls = new float[5] {0, 0.64f, 0.85f, 1.05f, 1.22f};
 
     private int HP;
     private int actualLvlOfWall;
-
-    private int hitPointsLvlOne = 25;
-    private int hitPointsLvlTwo = 50;
-    private int hitPointsLvlThree = 200;
-    private int hitPointsLvlFour = 300;
+    
     private int actualFullHp;
     private int halfOfFullHp;
+
+    private int[] fullHps = new int[5] { 0, 25, 50, 200, 300 };
 
     private bool playerPayButtonIsPressed;
     private bool playerHasCollidedWithWall;
@@ -44,14 +36,8 @@ public class Wall : MonoBehaviour
     private int amountOfPaidCoins;
     private bool payingHasBeggun;
 
-    private int requiredCoinsForUpgradeToOne = 1;
-    private int requiredCoinsForUpgradeToTwo = 3;
-    private int requiredCoinsForRepairLvlOneAndTwo = 1;
-    private int requiredCoinsForUpgradeToThree = 6;
-    private int requiredCoinsForRepairLvlThree = 3;
-    private int requiredCoinsForUpgradeToFour = 9;
-    private int requiredCoinsForRepairLvlFour = 4;
-    private int requiredCoinsForUpgrade = 1;
+    private int[] requiredCoinsForUpgrades = new int[4] { 1, 3, 6, 9 };
+    private int[] requiredCoinsForRepairs = new int[5] { 0, 1, 1, 2, 4 };
 
     private bool wallIsUnderConstruction;
     private float buildTime;
@@ -59,7 +45,7 @@ public class Wall : MonoBehaviour
 
     public event EventHandler<CallToWallArgs> OnCallBuilderToWall;
     public event EventHandler OnStopCallBuilderToWall;
-    public event EventHandler<CallToWallArgs> WallHasBeenUpgraded;
+    public event EventHandler<CallToWallArgs> OnWallHasBeenUpgraded;
 
     public class CallToWallArgs : EventArgs
     {
@@ -74,10 +60,7 @@ public class Wall : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         playerCharacter = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
-        scaffoldSpriteRenderer = scaffold.GetComponent<SpriteRenderer>();
-        scaffoldSpriteRenderer.enabled = false;
         if (transform.position.x > 0) transform.localScale = new Vector2(-1, 1);
-        AmountOfRequiredCoinsForUpgrade();
         townCenter = GameObject.Find("TownCenter");
         TownCenter tc = townCenter.GetComponent<TownCenter>();
         tc.OnTownCenterUpgrade += TcOnOnTownCenterUpgrade;
@@ -94,7 +77,6 @@ public class Wall : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Debug.Log(HP);
         playerPayButtonIsPressed = playerCharacter.GetComponent<PickDropCoins>().payButtonIsPressed;
 
         if (playerHasCollidedWithWall && playerPayButtonIsPressed && !payingHasBeggun && !wallIsUnderConstruction)
@@ -102,7 +84,6 @@ public class Wall : MonoBehaviour
             if (actualLvlOfWall <= 3)
             {
                 payingHasBeggun = true;
-                AmountOfRequiredCoinsForUpgrade();
                 InvokeRepeating("PayToWall", 0.2f, 0.5f);
             }
         }
@@ -127,11 +108,10 @@ public class Wall : MonoBehaviour
         wallHasBeenMarked = false;
         transform.tag = "Wall";
         CancelInvoke("CallBuilderToWall");
-        scaffoldSpriteRenderer.enabled = false;
         actualLvlOfWall++;
         ChangerToAnotherLvl();
         OnStopCallBuilderToWall?.Invoke(this, EventArgs.Empty);
-        WallHasBeenUpgraded?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
+        OnWallHasBeenUpgraded?.Invoke(this, new CallToWallArgs { positionOfWall = transform.position });
         foreach (var builder in assignedBuilders)
         {
             builder.GetComponent<BuilderBehaviour>().StopBuilding();
@@ -151,7 +131,7 @@ public class Wall : MonoBehaviour
             }
             else if (HP <= 0)
             {
-                spriteRenderer.sprite = baseForWall;
+                spriteRenderer.sprite = wallsSprites[0];
                 transform.tag = "EmptyWall";
                 transform.position = startingPos;
             }
@@ -201,15 +181,14 @@ public class Wall : MonoBehaviour
             amountOfPaidCoins++;
             Debug.Log(playerCoins);
             Debug.Log(amountOfPaidCoins);
-            if (amountOfPaidCoins >= requiredCoinsForUpgrade & !wallHasBeenMarked)
+            if (amountOfPaidCoins >= requiredCoinsForUpgrades[actualLvlOfWall] & !wallHasBeenMarked)
             {
-                // paid
+                // payment was succesful
                 buildTime = 10f;
                 wallHasBeenMarked = true;
                 transform.tag = "MarkedWall";
-                ScaffoldPosition();
-                scaffold.transform.position =  scaffoldPosition;
-                scaffoldSpriteRenderer.enabled = true;
+                spriteRenderer.sprite = scaffoldWallSprites[actualLvlOfWall];
+                transform.position = new Vector2(startingPos.x, scaffoldsPos);
                 amountOfPaidCoins = 0;
                 CancelInvoke("PayToWall");
                 InvokeRepeating("CallBuilderToWall", 0f, 5f);
@@ -219,15 +198,6 @@ public class Wall : MonoBehaviour
             CancelInvoke("PayToWall");
     }
 
-    private void AmountOfRequiredCoinsForUpgrade()
-    {
-        if (actualLvlOfWall == 0) requiredCoinsForUpgrade = requiredCoinsForUpgradeToOne;
-        else if (actualLvlOfWall == 1) requiredCoinsForUpgrade = requiredCoinsForUpgradeToTwo;
-        else if (actualLvlOfWall == 2) requiredCoinsForUpgrade = requiredCoinsForUpgradeToThree;
-        else if (actualLvlOfWall == 3) requiredCoinsForUpgrade = requiredCoinsForUpgradeToFour;
-    }
-
-    
 
     private void CallBuilderToWall()
     {
@@ -236,74 +206,19 @@ public class Wall : MonoBehaviour
     
     private void ChangerToAnotherLvl()
     {
-        switch (actualLvlOfWall)
-        {
-            case 0:
-                spriteRenderer.sprite = baseForWall;
-                break;
-            case 1:
-                spriteRenderer.sprite = wallLvlOne;
-                transform.position = new Vector2(transform.position.x, 0.64f);
-                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x , boxCollider2D.offset.y - 0.64f);
-                HP = hitPointsLvlOne;
-                halfOfFullHp = hitPointsLvlOne / 2;
-                break;
-            case 2:
-                spriteRenderer.sprite = wallLvlTwo;
-                transform.position = new Vector2(transform.position.x, 0.85f);
-                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.21f);
-                HP = hitPointsLvlTwo;
-                halfOfFullHp = hitPointsLvlTwo / 2;
-                break;
-            case 3:
-                spriteRenderer.sprite = wallLvlThree;
-                transform.position = new Vector2(transform.position.x, 1.05f);
-                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.2f);
-                HP = hitPointsLvlThree;
-                halfOfFullHp = hitPointsLvlThree / 2;
-                break;
-            case 4:
-                spriteRenderer.sprite = wallLvlFour;
-                transform.position = new Vector2(transform.position.x, 1.22f);
-                boxCollider2D.offset = new Vector2(boxCollider2D.offset.x, boxCollider2D.offset.y - 0.17f);
-                HP = hitPointsLvlFour;
-                break;
-        }
+        spriteRenderer.sprite = wallsSprites[actualLvlOfWall];
+        transform.position = new Vector2(transform.position.x, posesWalls[actualLvlOfWall]);
+        halfOfFullHp = fullHps[actualLvlOfWall] / 2;
     }
     
-    private void ScaffoldPosition()
-    {
-        Debug.Log(actualLvlOfWall);
-        if (actualLvlOfWall == 0)
-            scaffoldPosition = new Vector2(transform.position.x, 1.12f);
-        else if (actualLvlOfWall == 1)
-            scaffoldPosition = new Vector2(transform.position.x, 0.6f);
-        else if (actualLvlOfWall == 2)
-            scaffoldPosition = new Vector2(transform.position.x, 0.38f);
-        else if (actualLvlOfWall == 3)
-            scaffoldPosition = new Vector2(transform.position.x, 0.20f);
-    }
-
+    
     private void ChangeToBrokenWall()
     {
-        if (actualLvlOfWall == 1)
+        switch (actualLvlOfWall)
         {
-            spriteRenderer.sprite = wallLvlOneBroke;
-        }        
-        else if (actualLvlOfWall == 2)
-        {
-            spriteRenderer.sprite = wallLvlTwoBroke;
-            actualFullHp = hitPointsLvlTwo;
-        }            
-        else if (actualLvlOfWall == 3)
-        {
-            spriteRenderer.sprite = wallLvlThreeBroke;
-            actualFullHp = hitPointsLvlThree;
-        }            
-        else if (actualLvlOfWall == 4)
-        {
-            spriteRenderer.sprite = wallLvlFourBroke;
-            actualFullHp = hitPointsLvlFour;
-        }            
+            case 1:
+                spriteRenderer.sprite = wallsBrokenSprites[actualLvlOfWall];
+                break;
+        }
     }
 }

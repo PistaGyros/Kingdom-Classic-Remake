@@ -30,7 +30,7 @@ public class BorderOfKingdom : MonoBehaviour
         foreach (GameObject wall in walls)
         {
             Wall wall1 = wall.GetComponent<Wall>();
-            wall1.WallHasBeenUpgraded += Wall1OnWallHasBeenUpgraded;
+            wall1.OnWallHasBeenUpgraded += Wall1OnWallHasBeenUpgraded;
         }
     }
 
@@ -53,7 +53,7 @@ public class BorderOfKingdom : MonoBehaviour
         listOfWalls.OrderBy(wall => wall.transform.position.x);
         // here put some animation and stuff
         if (isEast)
-            transform.position = new Vector2(listOfWalls[0].transform.position.x + 2.5f, transform.position.y);
+            transform.position = new Vector2(listOfWalls[^1].transform.position.x + 2.5f, transform.position.y);
         else
             transform.position = new Vector2(listOfWalls[^1].transform.position.x - 2.5f, transform.position.y);
         OnPosOfBorderHasChanged?.Invoke(this, EventArgs.Empty);

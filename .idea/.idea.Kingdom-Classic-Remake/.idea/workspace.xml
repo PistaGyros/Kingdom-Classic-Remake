@@ -3,36 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="971234e1-9fd6-4712-a986-0b12c36b148b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Kingdom-Classic-Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Markets/BowMarket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Markets/BowMarket.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Markets/HammerMarket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Markets/HammerMarket.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Markets/ScytheMarket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Markets/ScytheMarket.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Archer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Farmer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Npcs/Farmer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/ArcherTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/ArcherTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/BeggarsCamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/BeggarsCamp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Farm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Farm.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Terrain/TIle Unit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TownCenter/TownCenter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WallsAndScaffolds.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WallsAndScaffolds/Wall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WallsAndScaffolds/Wall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Structures/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Structures/Wall.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArcherTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ArcherTower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BeggatsCamps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BeggatsCamps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BowMarketZero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BowMarketZero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BorderOfKingdom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BorderOfKingdom.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuilderBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayAndNightCycleBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Farm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Farm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HammerMarketZero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HammerMarketZero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickDropCoin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScytheMarket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScytheMarket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerCollider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tree1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tree1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TreeChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TreeChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +107,7 @@
       <workItem from="1719923368702" duration="42593000" />
       <workItem from="1720101090820" duration="12446000" />
       <workItem from="1720193893732" duration="7770000" />
-      <workItem from="1720362470814" duration="6080000" />
+      <workItem from="1720362470814" duration="14450000" />
     </task>
     <servers />
   </component>
