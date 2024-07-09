@@ -9,6 +9,7 @@ public class PeasentPickUp : MonoBehaviour
     [SerializeField] GameObject farmer;
     [SerializeField] GameObject hammerMarket;
     [SerializeField] GameObject bowMarket;
+    [SerializeField] GameObject scytheMarket;
     private float peasentSpeed = 5f;
     private Rigidbody2D rigidbody2D;
     private Animator animatorPeasent;
@@ -28,7 +29,26 @@ public class PeasentPickUp : MonoBehaviour
         BowMarketZero callPeasentToBow = bowMarket.GetComponent<BowMarketZero>();
         callPeasentToBow.OnCallPeasent += CallPeasentToBow_OnCallPeasent;
         callPeasentToBow.OnStopCallPeasent += CallPeasentToBow_OnStopCallPeasent;
+        scytheMarket = GameObject.Find("ScytheMarket");
+        ScytheMarket callPeasentToScythe = scytheMarket.GetComponent<ScytheMarket>();
+        callPeasentToScythe.OnCallPeasent += CallPeasentToScythe_OnCallPeasent;
+        callPeasentToScythe.OnStopCallPeasent += CallPeasentToScythe_OnStopCallPeasent;
         RunToKingdomCenter();
+    }
+
+    private void CallPeasentToScythe_OnStopCallPeasent(object sender, System.EventArgs e)
+    {
+        if (this != null)
+        {
+            direction = 0;
+            animatorPeasent.SetBool("IsMoving", false);
+        }
+    }
+
+    private void CallPeasentToScythe_OnCallPeasent(object sender, System.EventArgs e)
+    {
+        if (this != null)
+            RunForScythe();
     }
 
     private void CallPeasentToBow_OnStopCallPeasent(object sender, System.EventArgs e)
@@ -43,7 +63,7 @@ public class PeasentPickUp : MonoBehaviour
     private void CallPeasentToBow_OnCallPeasent(object sender, System.EventArgs e)
     {
         if (this != null)
-            RunForBow();           
+            RunForBow();
     }
 
     private void CallPeasent_OnStopCallPeasent(object sender, System.EventArgs e)
@@ -58,7 +78,7 @@ public class PeasentPickUp : MonoBehaviour
     private void CallPeasent_OnCallPeasent(object sender, System.EventArgs e)
     {
         if (this != null)
-            RunForHammer();          
+            RunForHammer();
     }
 
     void FixedUpdate()
@@ -79,18 +99,20 @@ public class PeasentPickUp : MonoBehaviour
             Instantiate(builder, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Destroy(gameObject, 0f);
         }
-        /*else if (collider2D.gameObject.CompareTag("ScytheMarket"))
+        else if (collider2D.gameObject.CompareTag("OpenScytheMarket"))
         {
             Instantiate(farmer, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-        }*/
+            Destroy(gameObject, 0f);
+        }
         else if (collider2D.gameObject.CompareTag("Coins") || collider2D.gameObject.CompareTag("PlayerCoins"))
         {
             numberOfCoinsOfPeasent += 1;
         }
-        else if (collider2D.CompareTag("TownCenter1"))
+        else if (collider2D.CompareTag("TC") || collider2D.CompareTag("UpgradableTC"))
         {
             direction = 0;
             animatorPeasent.SetBool("IsMoving", false);
+            peasentSpeed = 5f;
         }
     }
 
@@ -105,12 +127,14 @@ public class PeasentPickUp : MonoBehaviour
     {
         direction = transform.position.x > 0 ? -1 : 1;
         animatorPeasent.SetBool("IsMoving", true);
+        peasentSpeed = 2f;
     }
 
     private void RunForHammer()
     {
         if (hammerMarket != null)
             direction = transform.position.x > hammerMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
         animatorPeasent.SetBool("IsMoving", true);
         transform.localScale = new Vector2(direction, 1);
     }
@@ -119,6 +143,16 @@ public class PeasentPickUp : MonoBehaviour
     {
         if (bowMarket != null)
             direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
+        animatorPeasent.SetBool("IsMoving", true);
+        transform.localScale = new Vector2(direction, 1);
+    }
+
+    private void RunForScythe()
+    {
+        if (scytheMarket != null)
+            direction = transform.position.x > bowMarket.transform.position.x ? -1 : 1;
+        peasentSpeed = Random.Range(4, 6);
         animatorPeasent.SetBool("IsMoving", true);
         transform.localScale = new Vector2(direction, 1);
     }

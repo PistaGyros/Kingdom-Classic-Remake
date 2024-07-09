@@ -14,6 +14,9 @@ public class BowMarketZero : MonoBehaviour
     [SerializeField] Sprite bowMarketThree;
     [SerializeField] Sprite bowMarketFour;
 
+    [SerializeField] private GameObject outliner;
+    private SpriteRenderer outlineRenderer;
+    
     private static string openBowMarket = "OpenBowMarket";
     private static string closedBowMarket = "BowMarket";
 
@@ -33,6 +36,7 @@ public class BowMarketZero : MonoBehaviour
     {
         playerCharacter = GameObject.Find("Player");
         spriteDrawer = GetComponent<SpriteRenderer>();
+        outlineRenderer = outliner.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -65,6 +69,7 @@ public class BowMarketZero : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithMarket = true;
+            outlineRenderer.enabled = true;
         }
         if (collider2D.CompareTag("Peasents"))
         {
@@ -85,6 +90,7 @@ public class BowMarketZero : MonoBehaviour
             playerHasCollidedWithMarket = false;
             amountOfPaidCoins = 0;
             CancelInvoke("PayToMarket");
+            outlineRenderer.enabled = false;
         }
     }
 

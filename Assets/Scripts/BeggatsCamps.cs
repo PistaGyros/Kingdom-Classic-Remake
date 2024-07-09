@@ -6,6 +6,8 @@ using System;
 public class BeggarsCamps : MonoBehaviour
 {
     [SerializeField] GameObject beggar;
+    private GameObject farmUnderneath;
+    private bool itHasFarmUnderneath;
     public int numberOfBeggars;
     private float spawnTimer = 120f;
     private Vector2 pos;
@@ -41,6 +43,11 @@ public class BeggarsCamps : MonoBehaviour
         {
             numberOfBeggars++;
         }
+        else if (collider2D.CompareTag("Farm"))
+        {
+            farmUnderneath = collider2D.gameObject;
+            itHasFarmUnderneath = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collider2D)
@@ -49,5 +56,19 @@ public class BeggarsCamps : MonoBehaviour
         {
             numberOfBeggars--;
         }
+    }
+
+    public void DestroyCamp()
+    {
+        Destroy(gameObject, 1f);
+        if (itHasFarmUnderneath)
+        {
+            Invoke("ActivateFarmUnderneath", 10f);
+        }
+    }
+
+    private void ActivateFarmUnderneath()
+    {
+        farmUnderneath.GetComponent<Farm>().ActivateFarm();
     }
 }

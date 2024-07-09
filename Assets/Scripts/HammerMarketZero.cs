@@ -15,6 +15,9 @@ public class HammerMarketZero : MonoBehaviour
     [SerializeField] Sprite hammerMarketThree;
     [SerializeField] Sprite hammerMarketFour;
 
+    [SerializeField] private GameObject outliner;
+    private SpriteRenderer outlineRenderer;
+
     private static string closedMarketTag = "HammerMarket";
     private static string openMarketTag = "OpenHammerMarket";
 
@@ -33,6 +36,7 @@ public class HammerMarketZero : MonoBehaviour
     {
         playerCharacter = GameObject.Find("Player");
         spriteDrawer = GetComponent<SpriteRenderer>();
+        outlineRenderer = outliner.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -65,6 +69,7 @@ public class HammerMarketZero : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithMarket = true;
+            outlineRenderer.enabled = true;
         }
         if (collider2D.CompareTag("Peasents"))
         {
@@ -85,6 +90,7 @@ public class HammerMarketZero : MonoBehaviour
             playerHasCollidedWithMarket = false;
             amountOfPaidCoins = 0;
             CancelInvoke("PayToMarket");
+            outlineRenderer.enabled = false;
         }
     }
 
