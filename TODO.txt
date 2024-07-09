@@ -33,12 +33,12 @@ Funcional stuff:
 [x] add archer update overhaul
 [x] add last wall mechanic (borders of kingdom)
 []  add coin pouch
-[-] add towers mechanic
+[x] add towers mechanic
 []  add animation and stuff for borders
 []  add archer wander mechanic
 [--]add meadow mechanic
 []  add water with reflection
-[]  add farm's rivers
+[x] add farm's rivers
 []  add farms mechanic
 --------------------------------------------------------------------------------
 Enviroment:
