@@ -5,47 +5,60 @@ using UnityEngine;
 
 public class Farmer : MonoBehaviour
 {
-    [SerializeField] private GameObject farmLandPrefab;
-    private GameObject itsField;
-
-    public bool hasAssignedField;
-    private float newFarmCoords;
-    
+    public GameObject itsField;
+    private Rigidbody2D farmersRigidbody2D;
+    private static string freeFarmer = "FreeFarmer";
+    private int direction = 0;
+    private float speed = 1;
     
     
     void Start()
     {
-        
+        transform.tag = freeFarmer;
+        farmersRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        FarmerMove();
     }
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("Farm"))
+        if (collider2D.CompareTag("OpenFarm"))
         {
-            
-        }
-        if (collider2D.CompareTag("Ground"))
-        {
-            if (hasAssignedField)
-            {
-                if (newFarmCoords == collider2D.transform.position.x)
-                {
-                    // yeey we can start growing stuff
-                    CreateNewField();
-                }
-            }
+            transform.tag = "Farmer";
         }
     }
 
-    public void GoToYourField(float newFarmCoords)
+    public void GoToYourFarm(float newFarmCoords)
     {
-        
+        if (transform.position.x < newFarmCoords)
+            direction = 1;
+        else
+            direction = -1;
     }
 
-    private void CreateNewField()
+    public void GoToYourNewFarmLand(GameObject farmLand)
     {
-        itsField = Instantiate(farmLandPrefab, new Vector2(newFarmCoords, 0.35f), Quaternion.identity);
-        itsField.GetComponent<FarmLand>().isOccupied = true;
-        itsField.GetComponent<FarmLand>().itsFarmer = gameObject;
+        itsField = farmLand;
+        if (transform.position.x < itsField.transform.position.x)
+            direction = 1;
+        else
+            direction = -1;
+    }
+
+    public void GoToYourAssignedField()
+    {
+        if (transform.position.x < itsField.transform.position.x)
+            direction = 1;
+        else
+            direction = -1;
+    }
+
+    private void FarmerMove()
+    {
+        Vector2 farmerVelocity = new Vector2(direction, 0);
+        farmersRigidbody2D.velocity = farmerVelocity * speed;
     }
 }

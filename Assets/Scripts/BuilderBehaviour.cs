@@ -15,6 +15,7 @@ public class BuilderBehaviour : MonoBehaviour
     private GameObject[] emptyWalls;
     private GameObject[] archerTowers;
     private GameObject[] towersUnderConstruct;
+    private GameObject[] farms;
     
     Rigidbody2D rigidbody2D;
     private float direction;
@@ -103,6 +104,35 @@ public class BuilderBehaviour : MonoBehaviour
                 archerTower.OnStopCallBuildersToTower += ArcherTowerOnOnStopCallBuildersToTower;
             }   
         }
+
+        farms ??= GameObject.FindGameObjectsWithTag("Farm");
+        foreach (var farm in farms)
+        {
+            Farm farmScript = farm.GetComponent<Farm>();
+            farmScript.OnCallBuildersToFarm += FarmScriptOnOnCallBuildersToFarm;
+            farmScript.OnStopCallBuildersToFarm += FarmScriptOnOnStopCallBuildersToFarm;
+        }
+    }
+
+    private void FarmScriptOnOnStopCallBuildersToFarm(object sender, EventArgs e)
+    {
+        direction = 0;
+        isBussy = false;
+    }
+
+    private void FarmScriptOnOnCallBuildersToFarm(object sender, Farm.CallToFarmArgs e)
+    {
+        if (!isBussy)
+        {
+            currentPos = transform.position;
+            targetPos = new Vector2(e.posOfFarm, transform.position.y);
+            if (currentPos.x < targetPos.x)
+                direction = 1;
+            else
+                direction = -1;
+            transform.localScale = new Vector2(direction, 1);
+            isBussy = true;
+        }
     }
 
     private void ArcherTowerOnOnStopCallBuildersToTower(object sender, EventArgs e)
@@ -172,7 +202,8 @@ public class BuilderBehaviour : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
-            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct"))
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct")
+            || collider2D.CompareTag("MarkedFarm"))
         {
             // is building (working)
             StartWorking();
@@ -190,7 +221,8 @@ public class BuilderBehaviour : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
-            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct"))
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct")
+            || collider2D.CompareTag("MarkedFarm"))
         {
             // is building (working)
             StartWorking();
@@ -203,7 +235,8 @@ public class BuilderBehaviour : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") ||
-            (collider2D.CompareTag("TowerUnderConstruct")) || collider2D.CompareTag("Wall"))
+            (collider2D.CompareTag("TowerUnderConstruct")) || collider2D.CompareTag("Wall")
+            || collider2D.CompareTag("MarkedFarm"))
         {
             // stopped building (working)
             StopBuilding();

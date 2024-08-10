@@ -46,6 +46,9 @@ TagManager:
   - TowerUnderConstruct
   - ArcherCollider
   - Farm
+  - FreeFarmer
+  - OpenFarm
+  - MarkedFarm
   layers:
   - Default
   - TransparentFX

@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 public class GeneralHandler : MonoBehaviour
 {
     [SerializeField] private GameObject bowMarket;
+    [SerializeField] private GameObject scytheMarket;
     [SerializeField] private GameObject globalLight;
     private GameObject[] archers;
+    private GameObject[] freeFarmers;
 
     private List<GameObject> archersOnEast = new List<GameObject>();
     private List<GameObject> archersOnWest = new List<GameObject>();
+
+    private List<GameObject> openFarms = new List<GameObject>();
 
     private int actualDay;
 
@@ -26,6 +30,14 @@ public class GeneralHandler : MonoBehaviour
         market.OnBowPickedUp += MarketOnOnBowPickedUp;
         DayAndNightCycleBehaviour dayAndNightCycleBehaviour = globalLight.GetComponent<DayAndNightCycleBehaviour>();
         dayAndNightCycleBehaviour.OnChangeToNextDay += DayAndNightCycleBehaviourOnOnChangeToNextDay;
+        ScytheMarket hoeMarket = scytheMarket.GetComponent<ScytheMarket>();
+        hoeMarket.OnNewFarmer += HoeMarketOnOnNewFarmer;
+
+    }
+
+    private void HoeMarketOnOnNewFarmer(object sender, EventArgs e)
+    {
+        FreeFarmerSorter();
     }
 
     private void DayAndNightCycleBehaviourOnOnChangeToNextDay(object sender, DayAndNightCycleBehaviour.ChangeToNextDayArgs e)
@@ -64,6 +76,22 @@ public class GeneralHandler : MonoBehaviour
                 archersOnWest.Add(archer);
                 archer.GetComponentInChildren<ArcherBehaviour>().Invoke("NewWestBorder", 0.5f);
             }
+        }
+    }
+
+    private void FreeFarmerSorter()
+    {
+        freeFarmers = GameObject.FindGameObjectsWithTag("FreeFarmer");
+        foreach (var freeFarmer in freeFarmers)
+        {
+            GameObject[] openFarms = GameObject.FindGameObjectsWithTag("OpenFarm");
+            foreach (var openFarm in openFarms)
+            {
+                this.openFarms.Add(openFarm);
+            }
+            this.openFarms.OrderBy(wall => wall.transform.position.x);
+            GameObject nearestOpenFarm = openFarms[0];
+            freeFarmer.GetComponent<Farmer>().GoToYourFarm(nearestOpenFarm.transform.position.x);
         }
     }
 }

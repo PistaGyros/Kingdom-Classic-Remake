@@ -915,6 +915,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc4286ddbf25f2b468c371baabfbf06a, type: 3}
+--- !u!1 &688444059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6978043811012754494, guid: c8a3b4a9ac996bb49a63a9e9c30f9232, type: 3}
+  m_PrefabInstance: {fileID: 1888972405798207852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &788989041 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4480998773008431126, guid: 25c29728d3c87e64fa3b013499cd11b6, type: 3}
@@ -1895,6 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bowMarket: {fileID: 1967439265}
+  scytheMarket: {fileID: 688444059}
   globalLight: {fileID: 1678534562}
 --- !u!1 &1792617554 stripped
 GameObject:

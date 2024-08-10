@@ -33,6 +33,7 @@ public class ScytheMarket : MonoBehaviour
 
     public event EventHandler OnCallPeasent;
     public event EventHandler OnStopCallPeasent;
+    public event EventHandler OnNewFarmer;
 
 
     void Start()
@@ -56,7 +57,6 @@ public class ScytheMarket : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (playerHasCollidedWithMarket)
@@ -93,6 +93,7 @@ public class ScytheMarket : MonoBehaviour
             {
                 actualLevelOfMarket--;
                 ChangerToAnotherLvl();
+                OnNewFarmer?.Invoke(this, EventArgs.Empty);
                 Debug.Log("Peasent has picked up a tool, lvl of market has changed to " + actualLevelOfMarket);
             }
         }
