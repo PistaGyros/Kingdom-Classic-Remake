@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Video;
+
 
 public class Farm : MonoBehaviour
 {
@@ -195,7 +195,7 @@ public class Farm : MonoBehaviour
 
     private void PlaceNewFarmLand()
     {
-        farmLands.Add(Instantiate(farmLand, new Vector2(transform.position.x + posesOfFarmLands[numberOfFarmLands], 0.35f),
-            Quaternion.identity));
+        farmLands.Add(Instantiate(farmLand, new Vector2(transform.position.x
+                                                        + posesOfFarmLands[numberOfFarmLands], 0.35f), Quaternion.identity));
     }
 }
