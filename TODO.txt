@@ -1,5 +1,6 @@
 --------------------------------------------------------------------------------
 Actually working on:
+[-] adding farms mechanic
 --------------------------------------------------------------------------------
 General stuff:
 [x] add several version branchess into project
@@ -7,6 +8,7 @@ General stuff:
 Things not forget to finish:
 []  change delay time for upgrade of town center to 120
 []  add torches for town center
+[]  fix peasents anims
 --------------------------------------------------------------------------------
 Funcional stuff:
 []  add queen
@@ -39,7 +41,7 @@ Funcional stuff:
 [--]add meadow mechanic
 []  add water with reflection
 [x] add farm's rivers
-[]  add farms mechanic
+[-] add farms mechanic
 --------------------------------------------------------------------------------
 Enviroment:
 [x] add coin idle animation
@@ -54,7 +56,7 @@ Art:
 [x] add forest tiles
 [x] add boulders (foundation for towers)
 [x] add town center tiers
-    add animations for (builder[-], archer[x], beggar[x], farmer[], bunny[x], peasent[x])
+    add animations for (builder[x], archer[x], beggar[x], farmer[-], bunny[x], peasent[x])
 [x] add working animation for builder
 []  add coin pickup animation
 --------------------------------------------------------------------------------
