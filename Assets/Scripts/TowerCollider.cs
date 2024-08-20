@@ -6,24 +6,30 @@ using UnityEngine;
 public class TowerCollider : MonoBehaviour
 {
     [SerializeField] private GameObject archerTower;
-    
+    private ArcherTower archerTowerCode;
+
+    private void Start()
+    {
+        archerTowerCode = archerTower.GetComponent<ArcherTower>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("Player"))
-            archerTower.GetComponent<ArcherTower>().playerHasCollided = true;
+            archerTowerCode.playerHasCollided = true;
         else if (collider2D.CompareTag("Builder"))
         {
-            archerTower.GetComponent<ArcherTower>().activeWorkers.Add(collider2D.gameObject);
-            archerTower.GetComponent<ArcherTower>().BuilderHasCollided();
+            archerTowerCode.activeWorkers.Add(collider2D.gameObject);
+            archerTowerCode.BuilderHasCollided();
         }
         else if (collider2D.CompareTag("ArcherCollider"))
         {
-            if (archerTower.GetComponent<ArcherTower>().numberOfArchers <
-                archerTower.GetComponent<ArcherTower>().numeroOfAllowedArchers)
+            if (archerTowerCode.numberOfArchers <
+                archerTowerCode.numeroOfAllowedArchers)
             {
                 collider2D.transform.parent.position = 
-                    archerTower.GetComponent<ArcherTower>().SetPositionsForArchersStandPoints();
-                int sortingOrder = archerTower.GetComponent<ArcherTower>().numberOfArchers == 3 ? -4 : -2;
+                    archerTowerCode.SetPositionsForArchersStandPoints();
+                int sortingOrder = archerTowerCode.numberOfArchers == 3 ? -4 : -2;
                 collider2D.GetComponentInParent<SpriteRenderer>().sortingOrder = sortingOrder;
             }
         }
@@ -32,11 +38,11 @@ public class TowerCollider : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("Player"))
-            archerTower.GetComponent<ArcherTower>().playerHasCollided = false;
+            archerTowerCode.playerHasCollided = false;
         else if (collider2D.CompareTag("Builder"))
         {
-            archerTower.GetComponent<ArcherTower>().activeWorkers.Remove(collider2D.gameObject);
-            archerTower.GetComponent<ArcherTower>().BuilderHasLeft();
+            archerTowerCode.activeWorkers.Remove(collider2D.gameObject);
+            archerTowerCode.BuilderHasLeft();
         }
     }
 }

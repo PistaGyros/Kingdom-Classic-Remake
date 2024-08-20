@@ -10,10 +10,12 @@ public class Farm : MonoBehaviour
     [SerializeField] private GameObject farmLand;
     
     private GameObject player;
+    private PickDropCoins pickDropCoinsPlayer;
     [SerializeField] private BoxCollider2D farmBoxCollider;
-    private SpriteRenderer farmSpriteRenderer;
     [SerializeField] private GameObject farmOutline;
     private SpriteRenderer farmOutlineSpriteRenderer;
+    [SerializeField] private GameObject forGround;
+    private SpriteRenderer forGroundSpriteRenderer;
     private GameObject townCenter;
 
     private int farmLevel;
@@ -25,15 +27,18 @@ public class Farm : MonoBehaviour
     private int[] requiredCoinsForUp = new int[2] { 6, 8};
     [SerializeField] private List<Sprite> farmSprites;
     [SerializeField] private List<Sprite> farmScaffoldSprites;
-    
+    [SerializeField] private List<Sprite> farmOutlineSprites;
+
     private bool isFarmActive;
     private bool playerHasCollided;
     private bool payingHasBegun;
     private bool farmIsUnderConstruct;
     private bool farmHasBeenMarked;
     private int amountOfPaidCoins;
+    
     private float buildTime;
     private bool builderHasCollided;
+    private List<GameObject> activeBuilders = new List<GameObject>();
 
     public event EventHandler<CallToFarmArgs> OnCallBuildersToFarm;
     public event EventHandler OnStopCallBuildersToFarm;
@@ -46,11 +51,12 @@ public class Farm : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
+        pickDropCoinsPlayer = player.GetComponent<PickDropCoins>();
         townCenter = GameObject.Find("TownCenter");
         TownCenter townCenterScript = townCenter.GetComponent<TownCenter>();
         townCenterScript.OnTownCenterUpgrade += TownCenterScriptOnOnTownCenterUpgrade;
-        farmSpriteRenderer = GetComponent<SpriteRenderer>();
         farmOutlineSpriteRenderer = farmOutline.GetComponent<SpriteRenderer>();
+        forGroundSpriteRenderer = forGround.GetComponent<SpriteRenderer>();
         farmBoxCollider.enabled = false;
         startPos = transform.position.x;
     }
@@ -63,6 +69,13 @@ public class Farm : MonoBehaviour
             ActivateFarm();
         }
     }
+    
+    public void ActivateFarm()
+    {
+        isFarmActive = true;
+        farmBoxCollider.enabled = true;
+        transform.tag = "OpenFarm";
+    }
 
     private void FixedUpdate()
     {
@@ -70,8 +83,8 @@ public class Farm : MonoBehaviour
         {
             if (playerHasCollided && farmLevel <= 1)
             {
-                bool playerPayButtonIsPressed = player.GetComponent<PickDropCoins>().payButtonIsPressed;
-                int playersAmountOfCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
+                bool playerPayButtonIsPressed = pickDropCoinsPlayer.payButtonIsPressed;
+                int playersAmountOfCoins = pickDropCoinsPlayer.numberOfCoins;
                 if (playerPayButtonIsPressed && playersAmountOfCoins >= 1 && !payingHasBegun && !farmIsUnderConstruct)
                 {
                     payingHasBegun = true;
@@ -83,12 +96,14 @@ public class Farm : MonoBehaviour
                     CancelInvoke("PayingToFarm");
                 }
             }
-            if (farmHasBeenMarked && builderHasCollided && buildTime > 0)
+            if (farmHasBeenMarked & builderHasCollided & buildTime > 0)
             {
-                buildTime -= Time.fixedDeltaTime;
+                buildTime -= Time.fixedDeltaTime * activeBuilders.Count;
+                Debug.Log("Time to complete building remaining is: " + buildTime);
                 if (buildTime <= 0)
                 {
                     // farm has been upgraded
+                    Debug.Log("Building farm has been finished");
                     UpgradeFarm();
                 }
             }
@@ -97,16 +112,16 @@ public class Farm : MonoBehaviour
 
     private void PayingToFarm()
     {
-        int playersAmountOfCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
+        int playersAmountOfCoins = pickDropCoinsPlayer.numberOfCoins;
         if (!farmHasBeenMarked && playersAmountOfCoins >= 1)
         {
-            player.GetComponent<PickDropCoins>().numberOfCoins--;
+            pickDropCoinsPlayer.numberOfCoins--;
             amountOfPaidCoins++;
             Debug.Log(playersAmountOfCoins);
             Debug.Log(amountOfPaidCoins);
             if (amountOfPaidCoins == requiredCoinsForUp[farmLevel])
             {
-                // farm level up, farm has been marked
+                // farm has been marked
                 Debug.Log("Successful payment");
                 MarkFarm();
             }
@@ -120,22 +135,17 @@ public class Farm : MonoBehaviour
         transform.tag = "MarkedFarm";
         amountOfPaidCoins = 0;
         // scaffold sprite
-        farmSpriteRenderer.sprite = farmScaffoldSprites[farmLevel];
+        forGroundSpriteRenderer.sprite = farmScaffoldSprites[farmLevel];
         CancelInvoke("PayingToFarm");
         InvokeRepeating("CallBuilderToFarm", 0f, 5f);
     }
-
-    public void ActivateFarm()
-    {
-        isFarmActive = true;
-        farmBoxCollider.enabled = true;
-        transform.tag = "OpenFarm";
-    }
+    
 
     private void UpgradeFarm()
     {
         farmLevel++;
-        farmSpriteRenderer.sprite = farmSprites[farmLevel];
+        forGroundSpriteRenderer.sprite = farmSprites[farmLevel];
+        farmOutlineSpriteRenderer.sprite = farmOutlineSprites[farmLevel];
         if (farmLevel <= 1)
         {
             transform.tag = "OpenFarm";
@@ -144,9 +154,9 @@ public class Farm : MonoBehaviour
         {
             transform.tag = "Farm";
         }
-
         farmHasBeenMarked = false;
         farmIsUnderConstruct = false;
+        StopWorkersWork();
         CancelInvoke("CallBuilderToFarm");
         OnStopCallBuildersToFarm?.Invoke(this, EventArgs.Empty);
     }
@@ -169,11 +179,20 @@ public class Farm : MonoBehaviour
         else if (collider2D.CompareTag("Player"))
         {
             // activate outline
+            farmOutlineSpriteRenderer.enabled = true;
             playerHasCollided = true;
         }
         else if (collider2D.CompareTag("Builder"))
         {
             builderHasCollided = true;
+            if (activeBuilders.Count < 2)
+            {
+                activeBuilders.Add(collider2D.gameObject);
+            }
+            else
+            {
+                CancelInvoke("CallBuilderToFarm");
+            }
         }
     }
 
@@ -187,10 +206,28 @@ public class Farm : MonoBehaviour
     {
         if (collider2D.CompareTag("Player"))
         {
+            farmOutlineSpriteRenderer.enabled = false;
             playerHasCollided = false;
         }
         else if (collider2D.CompareTag("Builder"))
-            builderHasCollided = false;
+        {
+            activeBuilders.Remove(collider2D.gameObject);
+            if (activeBuilders.Count <= 1)
+            {
+                InvokeRepeating("CallBuilderToFarm", 0f, 5f);
+            }
+
+            if (activeBuilders.Count <= 0)
+                builderHasCollided = false;
+        }
+    }
+
+    private void StopWorkersWork()
+    {
+        foreach (var worker in activeBuilders)
+        {
+            worker.GetComponent<BuilderBehaviour>().StopBuilding();
+        }
     }
 
     private void PlaceNewFarmLand()

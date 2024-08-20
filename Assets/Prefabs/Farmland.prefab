@@ -143,7 +143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ab688ca091d6b4b8dc42ec5c78d980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 0}
-  phasesOfGrow: []
+  coin: {fileID: 2022387852028230222, guid: 9cafb947f4b5dbc46958e7985473c3d4, type: 3}
+  phasesOfGrow:
+  - {fileID: -991020943, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -963039946, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 202574091, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1347993425, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -72056042, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1907738923, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1602691092, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -2146454126, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
   itsFarmer: {fileID: 0}
   isOccupied: 0

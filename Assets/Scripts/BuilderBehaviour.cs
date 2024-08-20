@@ -221,8 +221,7 @@ public class BuilderBehaviour : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.CompareTag("MarkedTree") || collider2D.CompareTag("MarkedWall") || 
-            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct")
-            || collider2D.CompareTag("MarkedFarm"))
+            collider2D.CompareTag("WallUnderAttack") || collider2D.CompareTag("TowerUnderConstruct"))
         {
             // is building (working)
             StartWorking();
