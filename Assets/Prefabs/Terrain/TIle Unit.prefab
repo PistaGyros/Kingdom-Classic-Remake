@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 0.75}
+  m_Size: {x: 4.1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &2016275847348141596
 MonoBehaviour:
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa105950affa97c4f8af3e4bd97ef8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muddyTile: {fileID: 21300000, guid: a7ad508bcfe3d614fba84ccaf4d5d493, type: 3}
-  meadowTile: {fileID: 21300000, guid: 77dba214d98507e40b151ac8853e2ced, type: 3}
-  forestTile: {fileID: 21300000, guid: 6f847bae1f4912f4ab729546c16678b5, type: 3}
+  spritesList:
+  - {fileID: 21300000, guid: a7ad508bcfe3d614fba84ccaf4d5d493, type: 3}
+  - {fileID: 21300000, guid: 6f847bae1f4912f4ab729546c16678b5, type: 3}
+  - {fileID: 21300000, guid: 77dba214d98507e40b151ac8853e2ced, type: 3}
   bunny: {fileID: 1140588599149445967, guid: f1b286fed4633ef45a24b5642018bc82, type: 3}
 --- !u!50 &5201259246838708693
 Rigidbody2D:

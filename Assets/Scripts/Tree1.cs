@@ -13,6 +13,10 @@ public class Tree1 : MonoBehaviour
     [SerializeField] GameObject coin;
     private GameObject player;
 
+    [SerializeField] private GameObject outliner;
+    // 
+    private SpriteRenderer outlineRenderer;
+
     private float cutDownTime = 0f;
     private float progresCutDownTime = 0f;
     private bool treeIsUnderConstruction = false;
@@ -38,11 +42,11 @@ public class Tree1 : MonoBehaviour
     {
         player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        outlineRenderer = outliner.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
     {
-        playerCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
         playerPayButtonIsPressed = player.GetComponent<PickDropCoins>().payButtonIsPressed;
 
         if (playerHasCollidedWithTree && playerPayButtonIsPressed && !payingHasBeggun)
@@ -55,7 +59,6 @@ public class Tree1 : MonoBehaviour
             CancelInvoke("PayToTree");
             payingHasBeggun = false;
         }
-
         if (cutDownTime > 0 && treeIsUnderConstruction)
             cutDownTime -= Time.fixedDeltaTime;
         else if (cutDownTime < 0 && treeIsUnderConstruction)
@@ -74,8 +77,8 @@ public class Tree1 : MonoBehaviour
         {
             if (!treeIsMarked)
             {
-                spriteRenderer.sprite = treeWOutline;
                 playerHasCollidedWithTree = true;
+                outlineRenderer.enabled = true;
             }            
         }
 
@@ -98,6 +101,7 @@ public class Tree1 : MonoBehaviour
         if (collider2D.CompareTag("Player"))
         {
             playerHasCollidedWithTree = false;
+            outlineRenderer.enabled = false;
         }
 
         if (collider2D.CompareTag("Builder"))
@@ -120,6 +124,7 @@ public class Tree1 : MonoBehaviour
 
     private void PayToTree()
     {
+        playerCoins = player.GetComponent<PickDropCoins>().numberOfCoins;
         if (playerCoins >= requiredCoinsForMark && !treeIsMarked)
         {
             player.GetComponent<PickDropCoins>().numberOfCoins--;

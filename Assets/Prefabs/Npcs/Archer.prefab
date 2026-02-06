@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 1}
+  m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &5284439318929625098
 MonoBehaviour:
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7549294072829386708}
   m_Layer: 0
   m_Name: ArcherCollider
-  m_TagString: Untagged
+  m_TagString: ArcherCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

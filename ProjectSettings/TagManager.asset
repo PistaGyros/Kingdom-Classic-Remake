@@ -19,7 +19,6 @@ TagManager:
   - HammerMarket
   - MarkedTree
   - MarkableTrees
-  - TownCenter1
   - Bunnies
   - Arrow
   - Enemies
@@ -38,6 +37,18 @@ TagManager:
   - DestroyedWall
   - DeadBunny
   - DeadTroll
+  - ScytheMarket
+  - OpenScytheMarket
+  - UpgradableTC
+  - TC
+  - Tower
+  - UpgradableTower
+  - TowerUnderConstruct
+  - ArcherCollider
+  - Farm
+  - FreeFarmer
+  - OpenFarm
+  - MarkedFarm
   layers:
   - Default
   - TransparentFX

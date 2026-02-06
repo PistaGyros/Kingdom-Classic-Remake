@@ -15,6 +15,9 @@ public class PickDropCoins : MonoBehaviour
     public bool payButtonIsPressed;
     bool isCollidingWithTree;
     bool isCollidingWithUpgradableWall;
+    private bool isCollidingWwithTownCenter;
+    private bool isCollidingWithTower;
+    private bool isCollidingWithFarm;
 
 
     void Start()
@@ -35,10 +38,19 @@ public class PickDropCoins : MonoBehaviour
         {
             numberOfCoins += 1;
         }
-        if (collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
+        if (collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket")
+            || collider2D.CompareTag("OpenScytheMarket") || collider2D.CompareTag("ScytheMarket"))
         {
             isCollidingWithMarket = true;
         }
+        else if (collider2D.CompareTag("UpgradableTC"))
+            isCollidingWwithTownCenter = true;
+        else if (collider2D.CompareTag("TC"))
+            isCollidingWwithTownCenter = false;
+        else if (collider2D.CompareTag("UpgradableTower"))
+            isCollidingWithTower = true;
+        else if (collider2D.CompareTag("TowerUnderConstruct"))
+            isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees"))
         {
             isCollidingWithTree = true;
@@ -48,15 +60,28 @@ public class PickDropCoins : MonoBehaviour
         {
             isCollidingWithUpgradableWall = true;
         }
+        else if (collider2D.CompareTag("OpenFarm"))
+        {
+            isCollidingWithFarm = true;
+        }
     }
 
 
     void OnTriggerExit2D(Collider2D collider2D)
     {
-        if(collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket"))
+        if(collider2D.CompareTag("BowMarket") || collider2D.CompareTag("HammerMarket") || collider2D.CompareTag("OpenBowMarket") || collider2D.CompareTag("OpenHammerMarket")
+            || collider2D.CompareTag("OpenScytheMarket") || collider2D.CompareTag("ScytheMarket"))
         {
             isCollidingWithMarket = false;
         }
+        else if (collider2D.CompareTag("UpgradableTC"))
+            isCollidingWwithTownCenter = false;
+        else if (collider2D.CompareTag("TC"))
+            isCollidingWwithTownCenter = false;
+        else if (collider2D.CompareTag("UpgradableTower"))
+            isCollidingWithTower = false;
+        else if (collider2D.CompareTag("TowerUnderConstruct"))
+            isCollidingWithTower = false;
         else if (collider2D.CompareTag("MarkableTrees") || collider2D.CompareTag("MarkedTree"))
         {
             isCollidingWithTree = false;
@@ -66,12 +91,17 @@ public class PickDropCoins : MonoBehaviour
         {
             isCollidingWithUpgradableWall = false;
         }
+        else if (collider2D.CompareTag("OpenFarm"))
+        {
+            isCollidingWithFarm = false;
+        }
     }
 
 
     void OnDropCoin(InputValue value)
     {
-        if (numberOfCoins > 0 && !isCollidingWithMarket && !isCollidingWithTree && !isCollidingWithUpgradableWall)
+        if (numberOfCoins > 0 && !isCollidingWithMarket && !isCollidingWithTree && !isCollidingWithUpgradableWall && 
+            !isCollidingWwithTownCenter && !isCollidingWithTower && !isCollidingWithFarm)
         {
             numberOfCoins -= 1;
             SpawnCoin();

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2159827157841548997
+--- !u!1 &1201888428113224583
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7106464832061698132}
-  - component: {fileID: 2846286590573737369}
-  - component: {fileID: 8322172014557614129}
-  - component: {fileID: 1735022567541801331}
+  - component: {fileID: 538188804378654197}
+  - component: {fileID: 4971764019181279563}
+  - component: {fileID: 7629068848426651169}
+  - component: {fileID: 5418382888934144683}
   m_Layer: 0
-  m_Name: BeggarsCamp
+  m_Name: Farmland
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7106464832061698132
+--- !u!4 &538188804378654197
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2159827157841548997}
+  m_GameObject: {fileID: 1201888428113224583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.41, y: 0.91, z: -0.29001847}
+  m_LocalPosition: {x: 31.95237, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2846286590573737369
+--- !u!212 &4971764019181279563
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2159827157841548997}
+  m_GameObject: {fileID: 1201888428113224583}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,39 +74,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1032798923, guid: 2cb34891e2d308a49ad0afa764328141, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -991020943, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.2, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8322172014557614129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2159827157841548997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c8cd619edf35644b229eb54ee7f9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beggar: {fileID: 7367907440276099931, guid: 20d0beae89b519d4fabe1d3c034e4698, type: 3}
-  numberOfBeggars: 0
---- !u!61 &1735022567541801331
+--- !u!61 &7629068848426651169
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2159827157841548997}
+  m_GameObject: {fileID: 1201888428113224583}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -132,16 +118,40 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5417625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.0666666, y: 2.1333334}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3.2, y: 1.6}
+    newSize: {x: 3.2, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 1}
+  m_Size: {x: 3.2, y: 0.50321007}
   m_EdgeRadius: 0
+--- !u!114 &5418382888934144683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201888428113224583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ab688ca091d6b4b8dc42ec5c78d980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 2022387852028230222, guid: 9cafb947f4b5dbc46958e7985473c3d4, type: 3}
+  phasesOfGrow:
+  - {fileID: -991020943, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -963039946, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 202574091, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1347993425, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -72056042, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1907738923, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: 1602691092, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  - {fileID: -2146454126, guid: 01e5f4971e0e20644af7687ef1e28c14, type: 3}
+  itsFarmer: {fileID: 0}
+  isOccupied: 0
